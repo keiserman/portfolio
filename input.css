@@ -1,3 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400;1,9..40,600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "DM Sans";
+}
+
+@layer components {
+  body {
+    @apply bg-zinc-900;
+  }
+  .container {
+    @apply max-w-5xl m-auto px-6;
+  }
+  .nav-menu {
+    @apply flex gap-4;
+  }
+  .nav-wrapper {
+    @apply flex gap-4 items-center;
+  }
+  .btn {
+    @apply py-2 px-4 bg-white text-zinc-900 rounded-full;
+  }
+}
