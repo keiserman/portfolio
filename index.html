@@ -7,12 +7,12 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="bg-zinc-900">
     <header>
       <div
         class="container flex justify-between items-center text-zinc-400 py-4"
       >
-        <div class="text-xl text-white">Kevin Eiserman</div>
+        <a href="" class="text-xl text-white">Kevin Eiserman</a>
         <div class="nav-wrapper">
           <ul class="nav-menu">
             <li><a href="">Work</a></li>
@@ -23,18 +23,44 @@
         </div>
       </div>
     </header>
-    <div class="container text-white py-12">
-      <div class="max-w-3xl">
-        <h1 class="text-6xl mb-4" animated-heading="">
-          Hello! I'm Kevin — <br />Web Designer & Developer
-        </h1>
-        <p class="text-lg text-zinc-400 mb-6">
-          Bringing a design-first approach to front-end web development to
-          create intuitive and impactful user experiences.
-        </p>
-        <button class="btn btn-outline" hacker-text="">View work</button>
+    <section id="hero">
+      <div class="container text-white py-16">
+        <div class="max-w-3xl">
+          <h1 class="text-6xl mb-4" animated-heading="">
+            Hello! I'm Kevin — <br />Web Designer & Developer
+          </h1>
+          <p class="text-lg text-zinc-400 mb-6 max-w-xl">
+            Bringing a design-first approach to front-end web development to
+            create intuitive and impactful user experiences.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
+    <section id="portfolio">
+      <div class="container">
+        <div class="project-grid">
+          <div class="project">
+            <div class="flex flex-col items-start">
+              <div class="flex gap-2 mb-3">
+                <div class="project-tag">Web Design</div>
+                <div class="project-tag">Web Development</div>
+              </div>
+              <h2 class="text-3xl mb-3" animated-heading="">Arya Management</h2>
+              <p class="text-zinc-400 mb-3">
+                A New York based firm dedicated to providing building owners
+                with reliable property management services, emphasizing
+                consistent communication and meticulous care for client
+                properties.
+              </p>
+              <button class="btn btn-outline" hacker-text="">
+                View project
+              </button>
+            </div>
+            <img src="" alt="" class="aspect-square" />
+          </div>
+        </div>
+      </div>
+    </section>
     <script src="https://unpkg.com/split-type"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>

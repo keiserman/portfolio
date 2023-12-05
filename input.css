@@ -13,9 +13,6 @@ body {
 }
 
 @layer components {
-  body {
-    @apply bg-zinc-900;
-  }
   .container {
     @apply max-w-5xl m-auto px-6;
   }
@@ -30,5 +27,11 @@ body {
   }
   .btn-outline {
     @apply border-zinc-600 bg-transparent text-white;
+  }
+  .project {
+    @apply text-white p-6 bg-zinc-800 rounded-md grid grid-cols-2 items-center;
+  }
+  .project-tag {
+    @apply text-sm border border-zinc-600 bg-zinc-700 px-3 py-1 rounded-full;
   }
 }
