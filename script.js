@@ -1,3 +1,50 @@
+function Project(title, desc, tags, imageUrl) {
+  this.title = title;
+  this.desc = desc;
+  this.tags = tags;
+  this.imageUrl = imageUrl;
+}
+
+const projects = [
+  new Project(
+    "Arya Management",
+    "A New York based firm dedicated to providing building owners with reliable property management services, emphasizing consistent communication and meticulous care for client properties.",
+    ["Web Design", "Web Development"],
+    "assets/arya.jpg"
+  ),
+  new Project(
+    "Newtech Energy",
+    "Enabling property owners to upgrade their properties and boost revenue through the installation of electric vehicle (EV) chargers. Providing a full-service package from planning to maintenance, and helps with securing applicable incentives.",
+    ["Web Development"],
+    "assets/newtech.png"
+  ),
+];
+
+function renderProjects() {
+  const grid = document.querySelector(".project-grid");
+  projects.forEach((project) => {
+    const projectHTML = `
+      <div class="project">
+        <div class="flex flex-col items-start">
+          <div class="flex gap-2 mb-5">
+            ${project.tags
+              .map((tag) => `<div class="project-tag">${tag}</div>`)
+              .join("")}
+          </div>
+          <h2 class="text-4xl mb-5" animated-heading="">${project.title}</h2>
+          <p class="text-zinc-400 mb-5">${project.desc}</p>
+          <button class="btn btn-outline" hacker-text="">View project</button>
+        </div>
+        <img src="${
+          project.imageUrl
+        }" alt="" class="aspect-[5/4] bg-zinc-800 rounded-md object-cover" />
+      </div>`;
+    grid.innerHTML += projectHTML;
+  });
+}
+
+renderProjects();
+
 const animatedHeadings = document.querySelectorAll("[animated-heading]");
 
 animatedHeadings.forEach((heading) => {

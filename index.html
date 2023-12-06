@@ -7,26 +7,26 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="bg-zinc-950">
-    <header>
+  <body class="bg-zinc-950 antialiased">
+    <header class="fixed w-full z-50">
       <div
-        class="container flex justify-between items-center text-zinc-400 py-4"
+        class="container flex justify-between items-center py-4 bg-zinc-900/90 rounded-full border border-zinc-800 mt-2 backdrop-blur"
       >
         <a href="" class="text-xl text-white">Kevin Eiserman</a>
         <div class="nav-wrapper">
           <ul class="nav-menu">
-            <li><a href="">Work</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a class="nav-link" href="">Home</a></li>
+            <li><a class="nav-link" href="">Work</a></li>
+            <li><a class="nav-link" href="">About</a></li>
           </ul>
           <button class="btn" hacker-text="">Get in touch</button>
         </div>
       </div>
     </header>
-    <section id="hero">
-      <div class="container text-white py-16">
-        <div class="max-w-3xl">
-          <h1 class="text-6xl mb-4" animated-heading="">
+    <section id="hero" class="bg-gradient-to-b from-zinc-900 to-zinc-950">
+      <div class="container text-white pb-20 pt-40">
+        <div class="max-w-4xl">
+          <h1 class="text-7xl mb-4" animated-heading="">
             Hello! I'm Kevin — <br />Web Designer & Developer
           </h1>
           <p class="text-lg text-zinc-400 mb-6 max-w-xl">
@@ -38,26 +38,34 @@
     </section>
     <section id="portfolio">
       <div class="container">
-        <div class="project-grid">
-          <div class="project">
-            <div class="flex flex-col items-start">
-              <div class="flex gap-2 mb-3">
-                <div class="project-tag">Web Design</div>
-                <div class="project-tag">Web Development</div>
+        <div class="project-grid grid gap-3">
+          <template class="project-template">
+            <div class="project">
+              <div class="flex flex-col items-start">
+                <div class="flex gap-2 mb-5">
+                  <div class="project-tag">Web Design</div>
+                  <div class="project-tag">Web Development</div>
+                </div>
+                <h2 class="text-4xl mb-5" animated-heading="">
+                  Arya Management
+                </h2>
+                <p class="text-zinc-400 mb-5">
+                  A New York based firm dedicated to providing building owners
+                  with reliable property management services, emphasizing
+                  consistent communication and meticulous care for client
+                  properties.
+                </p>
+                <button class="btn btn-outline" hacker-text="">
+                  View project
+                </button>
               </div>
-              <h2 class="text-3xl mb-3" animated-heading="">Arya Management</h2>
-              <p class="text-zinc-400 mb-3">
-                A New York based firm dedicated to providing building owners
-                with reliable property management services, emphasizing
-                consistent communication and meticulous care for client
-                properties.
-              </p>
-              <button class="btn btn-outline" hacker-text="">
-                View project
-              </button>
+              <img
+                src="assets/arya.jpg"
+                alt=""
+                class="aspect-[5/4] bg-zinc-800 rounded-md object-cover"
+              />
             </div>
-            <img src="" alt="" class="aspect-square" />
-          </div>
+          </template>
         </div>
       </div>
     </section>
