@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-zinc-950 antialiased">
-    <header class="fixed w-full z-50">
-      <div
-        class="container flex justify-between items-center py-4 bg-zinc-900/90 rounded-full border border-zinc-800 mt-2 backdrop-blur"
-      >
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/70 backdrop-blur-md"
+    >
+      <div class="container flex justify-between items-center py-4">
         <a href="" class="text-xl text-white">Kevin Eiserman</a>
         <div class="nav-wrapper">
           <ul class="nav-menu">
@@ -19,14 +19,14 @@
             <li><a class="nav-link" href="">Work</a></li>
             <li><a class="nav-link" href="">About</a></li>
           </ul>
-          <button class="btn" hacker-text="">Get in touch</button>
+          <button class="btn" hacker-text>Get in touch</button>
         </div>
       </div>
     </header>
-    <section id="hero" class="bg-gradient-to-b from-zinc-900 to-zinc-950">
-      <div class="container text-white pb-20 pt-40">
+    <section id="hero">
+      <div class="container text-white pb-20 pt-36">
         <div class="max-w-4xl">
-          <h1 class="text-7xl mb-4" animated-heading="">
+          <h1 class="text-7xl mb-4" animated-heading>
             Hello! I'm Kevin — <br />Web Designer & Developer
           </h1>
           <p class="text-lg text-zinc-400 mb-6 max-w-xl">
@@ -42,27 +42,24 @@
           <template class="project-template">
             <div class="project">
               <div class="flex flex-col items-start">
-                <div class="flex gap-2 mb-5">
-                  <div class="project-tag">Web Design</div>
-                  <div class="project-tag">Web Development</div>
+                <div class="flex gap-2 mb-5" data-project-tags>
+                  <div class="project-tag">Project tag</div>
                 </div>
-                <h2 class="text-4xl mb-5" animated-heading="">
-                  Arya Management
+                <h2 class="text-4xl mb-5" animated-heading data-project-title>
+                  Project Title
                 </h2>
-                <p class="text-zinc-400 mb-5">
-                  A New York based firm dedicated to providing building owners
-                  with reliable property management services, emphasizing
-                  consistent communication and meticulous care for client
-                  properties.
+                <p class="text-zinc-400 mb-5" data-project-desc>
+                  Project description
                 </p>
-                <button class="btn btn-outline" hacker-text="">
-                  View project
+                <button class="btn btn-outline" hacker-text>
+                  View website
                 </button>
               </div>
               <img
-                src="assets/arya.jpg"
+                src=""
                 alt=""
                 class="aspect-[5/4] bg-zinc-800 rounded-md object-cover"
+                data-project-image
               />
             </div>
           </template>

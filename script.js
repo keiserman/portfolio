@@ -1,8 +1,9 @@
-function Project(title, desc, tags, imageUrl) {
+function Project(title, desc, tags, image, link) {
   this.title = title;
   this.desc = desc;
   this.tags = tags;
-  this.imageUrl = imageUrl;
+  this.image = image;
+  this.link = link;
 }
 
 const projects = [
@@ -20,33 +21,38 @@ const projects = [
   ),
 ];
 
-function renderProjects() {
+function renderProjects(projects) {
   const grid = document.querySelector(".project-grid");
   projects.forEach((project) => {
-    const projectHTML = `
-      <div class="project">
-        <div class="flex flex-col items-start">
-          <div class="flex gap-2 mb-5">
-            ${project.tags
-              .map((tag) => `<div class="project-tag">${tag}</div>`)
-              .join("")}
-          </div>
-          <h2 class="text-4xl mb-5" animated-heading="">${project.title}</h2>
-          <p class="text-zinc-400 mb-5">${project.desc}</p>
-          <button class="btn btn-outline" hacker-text="">View project</button>
-        </div>
-        <img src="${
-          project.imageUrl
-        }" alt="" class="aspect-[5/4] bg-zinc-800 rounded-md object-cover" />
-      </div>`;
-    grid.innerHTML += projectHTML;
+    let temp = document.querySelector(".project-template");
+    let clone = temp.content.cloneNode(true);
+
+    let title = clone.querySelector("[data-project-title]");
+    title.textContent = project.title;
+
+    let desc = clone.querySelector("[data-project-desc]");
+    desc.textContent = project.desc;
+
+    let image = clone.querySelector("[data-project-image]");
+    image.src = project.image;
+    image.alt = project.title;
+
+    let tagsContainer = clone.querySelector("[data-project-tags]");
+    tagsContainer.innerHTML = "";
+    project.tags.forEach((tag) => {
+      let tagDiv = document.createElement("div");
+      tagDiv.classList.add("project-tag");
+      tagDiv.textContent = tag;
+      tagsContainer.appendChild(tagDiv);
+    });
+
+    grid.appendChild(clone);
   });
 }
 
-renderProjects();
+renderProjects(projects);
 
 const animatedHeadings = document.querySelectorAll("[animated-heading]");
-
 animatedHeadings.forEach((heading) => {
   const myText = new SplitType(heading);
   gsap.set(myText.words, { opacity: 0, y: "100%" });
