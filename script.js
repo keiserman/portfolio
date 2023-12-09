@@ -19,6 +19,12 @@ const projects = [
     ["Web Development"],
     "assets/newtech.png"
   ),
+  new Project(
+    "Branch Industrial",
+    "A firm specializes in fostering connections within the industrial real estate sector to aid leaders in funding and executing projects, acquiring properties, and broadening their operational scope.",
+    ["Web Development"],
+    "assets/branch.png"
+  ),
 ];
 
 function renderProjects(projects) {
@@ -111,7 +117,7 @@ animatedButtons.forEach((button) => {
       }
 
       iteration += 1 / 3;
-    }, 30);
+    }, 25);
   });
 
   button.addEventListener("mouseout", (event) => {
