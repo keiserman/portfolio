@@ -3,33 +3,27 @@ import Button from "../components/Button.astro";
 const projects = await Astro.glob("../content/projects/*.md");
 ---
 
-<div class="w-full grid grid-cols-1 gap-6">
+<div class="w-full text-white">
+  <h2 class="text-5xl mb-6">Projects</h2>
   {
     projects.map((project) => (
-      <div class="text-white p-6 border bg-zinc-900 border-zinc-800 rounded-md grid grid-cols-2 gap-12 items-center">
-        <div class="flex flex-col items-start">
-          <div class="flex gap-2 mb-5" data-project-tags>
-            <div class="text-sm text-zinc-300 border border-zinc-700 bg-zinc-800 px-3 py-1 rounded-full">
+      <div class="grid grid-cols-3 gap-6 items-center text-white border-zinc-700 border-t py-6">
+        <div class="flex flex-col justify-between items-start h-full">
+          <div class="flex flex-col items-start">
+            <div class="text-sm uppercase tracking-wider text-zinc-400 mb-4">
               {project.frontmatter.tag}
             </div>
+            <h2 class="text-4xl mb-4" animated-heading>
+              {project.frontmatter.title}
+            </h2>
+            <p class="text-zinc-400">{project.frontmatter.description}</p>
           </div>
-          <h2
-            class="text-4xl leading-tight mb-4"
-            animated-heading
-            data-project-title
-          >
-            {project.frontmatter.title}
-          </h2>
-          <p class="text-zinc-400 mb-6" data-project-desc>
-            {project.frontmatter.description}
-          </p>
+
           <Button text="View project" />
         </div>
         <img
           src=""
-          alt=""
-          class="aspect-[5/4] bg-zinc-800 rounded-md object-cover"
-          data-project-image
+          class="aspect-[3/2] col-span-2 bg-zinc-800 rounded-md object-cover"
         />
       </div>
     ))
