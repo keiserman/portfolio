@@ -1,0 +1,28 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<div
+  class="text-white p-6 border bg-zinc-900 border-zinc-800 rounded-md grid grid-cols-2 gap-12 items-center"
+>
+  <div class="flex flex-col items-start">
+    <div class="flex gap-2 mb-5" data-project-tags>
+      <div
+        class="text-sm text-zinc-300 border border-zinc-700 bg-zinc-800 px-3 py-1 rounded-full"
+      >
+        Project tag
+      </div>
+    </div>
+    <h2 class="text-4xl leading-tight mb-4" animated-heading data-project-title>
+      Project Title
+    </h2>
+    <p class="text-zinc-400 mb-6" data-project-desc>Project description</p>
+    <Button text="View project" />
+  </div>
+  <img
+    src=""
+    alt=""
+    class="aspect-[5/4] bg-zinc-800 rounded-md object-cover"
+    data-project-image
+  />
+</div>
