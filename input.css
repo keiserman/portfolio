@@ -1,69 +1,64 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400;1,9..40,600&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
+@font-face {
   font-family: "DM Sans";
+  src: url("fonts/DMSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
 }
 
 .line {
   overflow: hidden;
 }
 
-h1 {
-  @apply text-6xl leading-tight;
-}
-
-h2 {
-  @apply text-4xl leading-tight;
-}
-
-p {
-  @apply leading-normal;
-}
-
-.container {
-  @apply max-w-6xl m-auto px-6;
-}
-
-.nav-menu {
-  @apply flex gap-4;
-}
-
-.nav-link {
-  @apply text-zinc-300;
-}
-
-.nav-link:hover {
-  @apply text-white;
-}
-
-.nav-wrapper {
-  @apply flex gap-4 items-center;
-}
-
-.btn {
-  @apply py-2 px-4 bg-white text-zinc-900 rounded-full font-mono text-sm border border-white transition;
-}
-
-.btn:hover {
-  @apply bg-zinc-200 border-zinc-200;
-}
-
-.btn-outline {
-  @apply border-zinc-600 bg-transparent text-white;
-}
-
-.btn-outline:hover {
-  @apply bg-white border-white text-zinc-900;
-}
-
-.project {
-  @apply text-white p-6 border bg-zinc-900 border-zinc-800 rounded-md grid grid-cols-2 gap-12 items-center;
-}
-
-.project-tag {
-  @apply text-sm text-zinc-300 border border-zinc-700 bg-zinc-800 px-3 py-1 rounded-full;
+@layer components {
+  h1 {
+    @apply text-6xl leading-tight;
+  }
+  h2 {
+    @apply text-4xl leading-tight;
+  }
+  p {
+    @apply leading-normal;
+  }
+  .container {
+    @apply max-w-6xl m-auto px-6;
+  }
+  .nav-menu {
+    @apply flex gap-4;
+  }
+  .nav-link {
+    @apply text-zinc-300;
+  }
+  .nav-link:hover {
+    @apply text-white;
+  }
+  .nav-wrapper {
+    @apply flex gap-4 items-center;
+  }
+  .btn {
+    @apply py-2 px-4 bg-white text-zinc-900 rounded-full font-mono text-sm border border-white transition;
+  }
+  .btn:hover {
+    @apply bg-zinc-200 border-zinc-200;
+  }
+  .btn-outline {
+    @apply border-zinc-600 bg-transparent text-white;
+  }
+  .btn-outline:hover {
+    @apply bg-white border-white text-zinc-900;
+  }
+  .project {
+    @apply text-white p-6 border bg-zinc-900 border-zinc-800 rounded-md grid grid-cols-2 gap-12 items-center;
+  }
+  .project-tag {
+    @apply text-sm text-zinc-300 border border-zinc-700 bg-zinc-800 px-3 py-1 rounded-full;
+  }
 }
