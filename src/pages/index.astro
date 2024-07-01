@@ -1,6 +1,7 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import ProjectList from "../components/ProjectList.astro";
+import Button from "../components/Button.astro";
 import "@fontsource-variable/dm-sans";
 ---
 
@@ -37,13 +38,13 @@ import "@fontsource-variable/dm-sans";
         </div>
       </section>
       <section id="contact">
-        <div class="container text-white py-20">
-          <h2 class="mb-3" animated-heading>Lets work together</h2>
+        <div class="max-w-7xl m-auto px-6 text-white py-20">
+          <h2 class="text-5xl mb-4" animated-heading>Lets work together</h2>
           <p class="text-lg text-zinc-400 mb-6 max-w-xl">
             Whether you need of design assistance or code tweaking, I can help
             take your project to the next level.
           </p>
-          <button class="btn btn-outline" hacker-text>Get in touch</button>
+          <Button text="Get in touch" />
         </div>
       </section>
       <footer>

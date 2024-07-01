@@ -4,10 +4,10 @@ const projects = await Astro.glob("../content/projects/*.md");
 ---
 
 <div class="w-full text-white">
-  <h2 class="text-5xl mb-6">Projects</h2>
+  <h2 class="text-5xl mb-8">Projects</h2>
   {
     projects.map((project) => (
-      <div class="grid grid-cols-3 gap-6 items-center text-white border-zinc-700 border-t py-6">
+      <div class="grid grid-cols-3 gap-8 items-center text-white border-zinc-700 border-t py-8">
         <div class="flex flex-col justify-between items-start h-full">
           <div class="flex flex-col items-start">
             <div class="text-sm uppercase tracking-wider text-zinc-400 mb-4">
@@ -21,10 +21,7 @@ const projects = await Astro.glob("../content/projects/*.md");
 
           <Button text="View project" />
         </div>
-        <img
-          src=""
-          class="aspect-[3/2] col-span-2 bg-zinc-800 rounded-md object-cover"
-        />
+        <img src="" class="aspect-[3/2] col-span-2 bg-zinc-800 object-cover" />
       </div>
     ))
   }
