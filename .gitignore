@@ -1,3 +1,4 @@
 /node_modules
 tailwind.config.js
 tsconfig.json
+/dist
