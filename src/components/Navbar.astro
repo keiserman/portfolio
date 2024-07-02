@@ -3,15 +3,31 @@ import Button from "../components/Button.astro";
 ---
 
 <header class="absolute w-full">
-  <div class="max-w-7xl m-auto px-6 flex justify-between items-center py-4">
+  <div
+    class="max-w-7xl mx-2 mt-2 p-3 flex justify-between items-center border border-zinc-700 bg-zinc-800 rounded-lg shadow-lg"
+  >
     <a href="#" class="text-xl text-white">Kevin Eiserman</a>
-    <div class="flex gap-4 items-center">
-      <ul class="flex gap-4">
-        <li><a class="text-zinc-300 hover:text-white" href="">Home</a></li>
-        <li><a class="text-zinc-300 hover:text-white" href="">Work</a></li>
-        <li><a class="text-zinc-300 hover:text-white" href="">About</a></li>
-      </ul>
-      <Button text="Get in touch" />
+    <div id="nav-menu" class="md:block hidden">
+      <div
+        class="md:flex md:flex-row md:bg-transparent md:relative md:top-0 md:p-0 gap-4 md:items-center flex flex-col absolute top-20 right-0 p-10 w-full bg-zinc-800"
+      >
+        <a class="text-zinc-300 hover:text-white" href="">Home</a>
+        <a class="text-zinc-300 hover:text-white" href="">Work</a>
+        <a class="text-zinc-300 hover:text-white" href="">About</a>
+        <Button text="Get in touch" />
+      </div>
+    </div>
+    <div id="hamburger" class="flex flex-col gap-1.5 md:hidden z-50">
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
     </div>
   </div>
 </header>
+<script>
+  const navMenu = document.querySelector("#nav-menu");
+  const hamburger = document.querySelector("#hamburger");
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("hidden");
+  });
+</script>
