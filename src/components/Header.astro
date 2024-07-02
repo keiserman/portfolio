@@ -2,14 +2,12 @@
 import Button from "./Button.astro";
 ---
 
-<header class="fixed w-full border-b border-zinc-300 bg-white">
-  <div
-    class="m-auto max-w-screen-xl px-6 py-8 flex justify-between items-center"
-  >
+<header class="fixed w-full border-b border-zinc-300 bg-white z-50">
+  <div class="m-auto max-w-screen-xl p-6 flex justify-between items-center">
     <a href="/" class="text-xl">Kevin Eiserman</a>
     <div id="nav-menu" class="md:block hidden">
       <div
-        class="md:flex md:flex-row md:bg-transparent md:relative md:top-0 md:p-0 gap-4 md:items-center flex flex-col absolute top-20 right-0 p-6 w-full bg-zinc-800"
+        class="md:flex md:flex-row md:bg-transparent md:relative md:top-0 md:p-0 gap-4 md:items-center flex flex-col absolute top-20 right-0 p-6 rounded-lg w-full bg-zinc-50"
       >
         <a href="/" class="text-zinc-700 hover:text-black">Home</a>
         <a href="/about" class="text-zinc-700 hover:text-black">Work</a>
