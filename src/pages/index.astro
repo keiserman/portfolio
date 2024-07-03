@@ -20,12 +20,41 @@ import Button from "../components/Button.astro";
           Bringing a design-first approach to front-end web development to
           create intuitive and impactful user experiences.
         </p>
+        <Button text="Get in touch" />
       </div>
     </div>
   </section>
   <section id="portfolio">
     <div class="max-w-7xl m-auto px-6 flex justify-between items-center py-4">
       <ProjectList />
+    </div>
+  </section>
+  <section class="bg-zinc-50 py-24">
+    <div class="max-w-7xl m-auto px-6">
+      <h2 class="text-4xl mb-4">Capabilities</h2>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="border border-zinc-300 p-6 rounded-lg">
+          <div class="text-lg font-mono mb-12 text-zinc-400">(01)</div>
+          <div class="text-2xl mb-4 text-zinc-900">Web Design</div>
+          <div class="text-md text-zinc-600">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </div>
+        </div>
+        <div class="border border-zinc-300 p-6 rounded-lg">
+          <div class="text-lg font-mono mb-12 text-zinc-400">(02)</div>
+          <div class="text-2xl mb-4 text-zinc-900">Web Development</div>
+          <div class="text-md text-zinc-600">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </div>
+        </div>
+        <div class="border border-zinc-300 p-6 rounded-lg">
+          <div class="text-lg font-mono mb-12 text-zinc-400">(03)</div>
+          <div class="text-2xl mb-4 text-zinc-900">UI/UX Design</div>
+          <div class="text-md text-zinc-600">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section id="contact">
@@ -39,35 +68,3 @@ import Button from "../components/Button.astro";
     </div>
   </section>
 </MainLayout>
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import SplitType from "split-type";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  setupTextAnimation();
-
-  function setupTextAnimation() {
-    const elements = document.querySelectorAll("[data-animate='heading']");
-    new SplitType(elements, {
-      types: "lines, words, chars",
-      tagName: "span",
-    });
-
-    elements.forEach((element) => {
-      gsap.from(element.querySelectorAll(".char"), {
-        scrollTrigger: {
-          trigger: element,
-          start: "top center",
-          end: "bottom center",
-          scrub: 1,
-        },
-        opacity: 0.25,
-        duration: 1,
-        ease: "power1.out",
-        stagger: 0.1,
-      });
-    });
-  }
-</script>
