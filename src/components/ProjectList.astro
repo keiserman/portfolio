@@ -13,7 +13,7 @@ const projects = await Astro.glob("../content/projects/*.md");
             <div class="text-sm uppercase tracking-wider text-zinc-700 mb-4">
               {project.frontmatter.tag}
             </div>
-            <h2 class="text-4xl mb-4" animated-heading>
+            <h2 class="text-4xl mb-4" data-animate="heading">
               {project.frontmatter.title}
             </h2>
             <p class="text-zinc-700 mb-4">{project.frontmatter.description}</p>

@@ -10,7 +10,10 @@ import Button from "../components/Button.astro";
       class="max-w-screen-xl m-auto px-6 flex justify-between items-center pb-28 pt-40"
     >
       <div class="max-w-4xl">
-        <h1 class="md:text-6xl text-4xl leading-tight mb-4">
+        <h1
+          data-animate="heading"
+          class="md:text-6xl text-4xl leading-tight mb-4"
+        >
           Hello! I'm Kevin — <br />Web Designer & Developer
         </h1>
         <p class="text-lg text-zinc-700 mb-6 max-w-xl">
@@ -27,7 +30,7 @@ import Button from "../components/Button.astro";
   </section>
   <section id="contact">
     <div class="max-w-7xl m-auto px-6 py-20">
-      <h2 class="text-5xl mb-4" animated-heading>Lets work together</h2>
+      <h2 class="text-5xl mb-4" data-animate="heading">Lets work together</h2>
       <p class="text-lg text-zinc-700 mb-6 max-w-xl">
         Whether you need of design assistance or code tweaking, I can help take
         your project to the next level.
@@ -36,3 +39,35 @@ import Button from "../components/Button.astro";
     </div>
   </section>
 </MainLayout>
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  setupTextAnimation();
+
+  function setupTextAnimation() {
+    const elements = document.querySelectorAll("[data-animate='heading']");
+    new SplitType(elements, {
+      types: "lines, words, chars",
+      tagName: "span",
+    });
+
+    elements.forEach((element) => {
+      gsap.from(element.querySelectorAll(".char"), {
+        scrollTrigger: {
+          trigger: element,
+          start: "top center",
+          end: "bottom center",
+          scrub: 1,
+        },
+        opacity: 0.25,
+        duration: 1,
+        ease: "power1.out",
+        stagger: 0.1,
+      });
+    });
+  }
+</script>
