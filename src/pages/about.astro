@@ -1,8 +1,11 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import Section from "../components/Section.astro";
 import Button from "../components/Button.astro";
 ---
 
 <MainLayout>
-  <section class="py-28"><Button text="Learn more" /></section>
+  <Section id="about">
+    <Button text="Learn more" />
+  </Section>
 </MainLayout>

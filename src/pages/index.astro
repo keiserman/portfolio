@@ -1,70 +1,60 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import Section from "../components/Section.astro";
 import ProjectList from "../components/ProjectList.astro";
 import Button from "../components/Button.astro";
 ---
 
 <MainLayout>
-  <section>
-    <div
-      class="max-w-screen-xl m-auto px-6 flex justify-between items-center pb-28 pt-40"
-    >
-      <div class="max-w-4xl">
-        <h1
-          data-animate="heading"
-          class="md:text-6xl text-4xl leading-tight mb-4"
-        >
-          Hello! I'm Kevin — <br />Web Designer & Developer
-        </h1>
-        <p class="text-lg text-zinc-700 mb-6 max-w-xl">
-          Bringing a design-first approach to front-end web development to
-          create intuitive and impactful user experiences.
-        </p>
-        <Button text="Get in touch" />
-      </div>
-    </div>
-  </section>
-  <section id="portfolio">
-    <div class="max-w-7xl m-auto px-6 flex justify-between items-center py-4">
-      <ProjectList />
-    </div>
-  </section>
-  <section class="bg-zinc-50 py-24">
-    <div class="max-w-7xl m-auto px-6">
-      <h2 class="text-4xl mb-4">Capabilities</h2>
-      <div class="grid grid-cols-3 gap-4">
-        <div class="border border-zinc-300 p-6 rounded-lg">
-          <div class="text-lg font-mono mb-12 text-zinc-400">(01)</div>
-          <div class="text-2xl mb-4 text-zinc-900">Web Design</div>
-          <div class="text-md text-zinc-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-          </div>
-        </div>
-        <div class="border border-zinc-300 p-6 rounded-lg">
-          <div class="text-lg font-mono mb-12 text-zinc-400">(02)</div>
-          <div class="text-2xl mb-4 text-zinc-900">Web Development</div>
-          <div class="text-md text-zinc-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-          </div>
-        </div>
-        <div class="border border-zinc-300 p-6 rounded-lg">
-          <div class="text-lg font-mono mb-12 text-zinc-400">(03)</div>
-          <div class="text-2xl mb-4 text-zinc-900">UI/UX Design</div>
-          <div class="text-md text-zinc-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="contact">
-    <div class="max-w-7xl m-auto px-6 py-20">
-      <h2 class="text-5xl mb-4" data-animate="heading">Lets work together</h2>
+  <Section id="hero">
+    <div class="max-w-4xl pt-24">
+      <h1 class="md:text-6xl text-4xl leading-tight mb-4">
+        Hello! I'm Kevin — <br />Web Designer & Developer
+      </h1>
       <p class="text-lg text-zinc-700 mb-6 max-w-xl">
-        Whether you need of design assistance or code tweaking, I can help take
-        your project to the next level.
+        Bringing a design-first approach to front-end web development to create
+        intuitive and impactful user experiences.
       </p>
       <Button text="Get in touch" />
     </div>
-  </section>
+  </Section>
+  <Section id="portfolio">
+    <div class="flex justify-between items-center py-4">
+      <ProjectList />
+    </div>
+  </Section>
+  <Section id="capabilities">
+    <h2 class="text-4xl mb-4">Capabilities</h2>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="border border-zinc-300 p-6 rounded-lg">
+        <div class="text-lg font-mono mb-12 text-zinc-400">(01)</div>
+        <div class="text-2xl mb-4 text-zinc-900">Web Design</div>
+        <div class="text-md text-zinc-600">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </div>
+      </div>
+      <div class="border border-zinc-300 p-6 rounded-lg">
+        <div class="text-lg font-mono mb-12 text-zinc-400">(02)</div>
+        <div class="text-2xl mb-4 text-zinc-900">Web Development</div>
+        <div class="text-md text-zinc-600">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </div>
+      </div>
+      <div class="border border-zinc-300 p-6 rounded-lg">
+        <div class="text-lg font-mono mb-12 text-zinc-400">(03)</div>
+        <div class="text-2xl mb-4 text-zinc-900">UI/UX Design</div>
+        <div class="text-md text-zinc-600">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </div>
+      </div>
+    </div>
+  </Section>
+  <Section id="contact">
+    <h2 class="text-5xl mb-4" data-animate="heading">Lets work together</h2>
+    <p class="text-lg text-zinc-700 mb-6 max-w-xl">
+      Whether you need of design assistance or code tweaking, I can help take
+      your project to the next level.
+    </p>
+    <Button text="Get in touch" />
+  </Section>
 </MainLayout>
