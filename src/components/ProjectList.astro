@@ -3,33 +3,31 @@ import Button from "../components/Button.astro";
 const projects = await Astro.glob("../content/projects/*.md");
 ---
 
-<div class="w-full">
-  <h2 class="text-5xl mb-8">Projects</h2>
-  {
-    projects.map((project) => (
-      <div class="grid md:grid-cols-3 gap-8 items-center border-zinc-300 border-t py-8">
-        <div class="flex flex-col justify-between items-start h-full">
-          <div class="flex flex-col items-start">
-            <div class="text-sm uppercase tracking-wider text-zinc-700 mb-4">
-              {project.frontmatter.tag}
-            </div>
-            <h2 class="text-4xl mb-4" data-animate="heading">
-              {project.frontmatter.title}
-            </h2>
-            <p class="text-zinc-700 mb-4">{project.frontmatter.description}</p>
+{
+  projects.map((project) => (
+    <div class="grid md:grid-cols-3 gap-8 items-center border-zinc-300 border-t py-8">
+      <div class="flex flex-col justify-between items-start h-full">
+        <div class="flex flex-col items-start">
+          <div class="text-sm uppercase tracking-wider text-zinc-700 mb-4">
+            {project.frontmatter.tag}
           </div>
-
-          <Button text="View project" />
+          <h2 class="text-4xl mb-4" data-animate="heading">
+            {project.frontmatter.title}
+          </h2>
+          <p class="text-zinc-700 mb-4">{project.frontmatter.description}</p>
         </div>
-        <img
-          src=""
-          data-animate="element"
-          class="aspect-[3/2] col-span-2 bg-zinc-200 object-cover rounded-lg"
-        />
+
+        <Button text="View project" />
       </div>
-    ))
-  }
-</div>
+      <img
+        src=""
+        data-animate="element"
+        class="aspect-[3/2] col-span-2 bg-zinc-200 object-cover rounded-lg"
+      />
+    </div>
+  ))
+}
+
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
