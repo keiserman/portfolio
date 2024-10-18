@@ -7,6 +7,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["DM Sans Variable", ...defaultTheme.fontFamily.sans],
+        mono: ["DM Mono", ...defaultTheme.fontFamily.mono],
       },
     },
   },
