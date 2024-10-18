@@ -1,32 +1,34 @@
 ---
 import Button from "../components/Button.astro";
+import Badge from "./Badge.astro";
 const projects = await Astro.glob("../content/projects/*.md");
 ---
 
-{
-  projects.map((project) => (
-    <div class="grid md:grid-cols-3 gap-8 items-center border-zinc-700 border-t py-8">
-      <div class="flex flex-col justify-between items-start h-full">
-        <div class="flex flex-col items-start">
-          <div class="text-sm uppercase tracking-wider text-zinc-500 mb-4">
-            {project.frontmatter.tag}
-          </div>
-          <h2 class="text-4xl mb-4" data-animate="heading">
-            {project.frontmatter.title}
-          </h2>
-          <p class="text-zinc-500 mb-4">{project.frontmatter.description}</p>
-        </div>
+<div class="grid gap-8">
+  {
+    projects.map((project) => (
+      <div class="card grid md:grid-cols-3 gap-8 items-center">
+        <div class="flex flex-col justify-between items-start h-full">
+          <div class="flex flex-col items-start">
+            <Badge>{project.frontmatter.tag}</Badge>
 
-        <Button text="View project" />
+            <h2 class="text-4xl mb-4" data-animate="heading">
+              {project.frontmatter.title}
+            </h2>
+            <p class="text-zinc-400 mb-4">{project.frontmatter.description}</p>
+          </div>
+
+          <Button text="View project" variant="secondary" />
+        </div>
+        <img
+          src=""
+          data-animate="element"
+          class="aspect-[3/2] col-span-2 bg-zinc-700 object-cover rounded-lg"
+        />
       </div>
-      <img
-        src=""
-        data-animate="element"
-        class="aspect-[3/2] col-span-2 bg-zinc-200 object-cover rounded-lg"
-      />
-    </div>
-  ))
-}
+    ))
+  }
+</div>
 
 <script>
   import { gsap } from "gsap";
@@ -38,12 +40,12 @@ const projects = await Astro.glob("../content/projects/*.md");
     gsap.from(element, {
       scrollTrigger: {
         trigger: element,
-        scrub: true,
+        scrub: 0.5,
         start: "top center",
         end: "bottom center",
       },
-      opacity: 0.25,
-      duration: 2,
+      scale: 0.9,
+      duration: 1,
     });
   });
 </script>

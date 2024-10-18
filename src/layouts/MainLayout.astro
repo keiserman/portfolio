@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import "@fontsource-variable/dm-sans";
 ---
 
 <html lang="en">
@@ -11,7 +12,6 @@ import Footer from "../components/Footer.astro";
     <title>Kevin Eiserman - Portfolio</title>
   </head>
   <body>
-    <Header />
     <main>
       <slot />
     </main>
@@ -20,10 +20,14 @@ import Footer from "../components/Footer.astro";
 </html>
 <style is:global>
   body {
-    font-family: "Satoshi";
+    @apply bg-zinc-950 text-white;
   }
 
   h1 {
+    @apply md:text-5xl text-4xl font-medium;
+  }
+
+  h2 {
     @apply md:text-5xl text-4xl font-medium;
   }
 
@@ -35,11 +39,15 @@ import Footer from "../components/Footer.astro";
     @apply max-w-screen-xl m-auto;
   }
 
-  section {
-    @apply md:py-24 py-14;
+  .section {
+    @apply md:py-32 py-14;
   }
 
   .navbar-link {
     @apply text-zinc-400 hover:text-white;
+  }
+
+  .card {
+    @apply px-8 py-10 rounded-xl bg-gradient-to-b from-zinc-950 to-zinc-900 border border-zinc-800;
   }
 </style>

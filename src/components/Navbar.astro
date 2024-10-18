@@ -2,31 +2,27 @@
 import Button from "./Button.astro";
 ---
 
-<header
-  class="w-full py-6 border-b border-zinc-800 bg-transparent absolute z-50"
->
-  <div class="padding-global">
-    <div class="container flex justify-between items-center">
-      <a href="/" class="text-white text-lg flex flex-row gap-3"
-        >Kevin Eiserman</a
+<header class="w-full p-6 absolute top-0 bg-transparent z-50">
+  <div class="container flex items-center gap-4">
+    <a href="/" class="text-white text-lg">Kevin Eiserman</a>
+    <div id="nav-menu" class="md:block hidden grow">
+      <div
+        class="md:flex md:flex-row md:bg-transparent md:relative md:top-0 md:p-0 gap-4 md:items-center flex flex-col absolute top-20 right-0 p-6 rounded-lg"
       >
-      <div id="nav-menu" class="md:block hidden">
-        <div
-          class="md:flex md:flex-row md:bg-transparent md:relative md:top-0 md:p-0 gap-4 md:items-center flex flex-col absolute top-20 right-0 p-6 rounded-lg w-full bg-zinc-800"
-        >
-          <a href="/" class="navbar-link">Home</a>
+        <div class="flex gap-4 grow justify-center">
           <a href="/about" class="navbar-link">About</a>
           <a href="" class="navbar-link">Services</a>
           <a href="" class="navbar-link">Process</a>
-          <a href="" class="navbar-link">Portfolio</a>
-          <Button text="Get in touch" />
+          <a href="" class="navbar-link">Work</a>
+          <a href="" class="navbar-link">Pricing</a>
         </div>
+        <Button text="Get in touch" variant="secondary" />
       </div>
-      <div id="hamburger" class="flex flex-col gap-1.5 md:hidden z-50">
-        <span class="w-6 h-0.5 bg-white"></span>
-        <span class="w-6 h-0.5 bg-white"></span>
-        <span class="w-6 h-0.5 bg-white"></span>
-      </div>
+    </div>
+    <div id="hamburger" class="flex flex-col gap-1.5 md:hidden z-50">
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
+      <span class="w-6 h-0.5 bg-white"></span>
     </div>
   </div>
 </header>

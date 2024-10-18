@@ -1,11 +1,17 @@
 ---
-const { text } = Astro.props;
+const { text, variant } = Astro.props;
+const isSecondary = variant === "secondary";
 ---
 
 <button
-  class="p-3 bg-transparent text-zinc-100 rounded-md font-mono text-xs uppercase leading-none tracking-wider shadow-sm border border-zinc-700 transition hover:bg-zinc-100 hover:border-zinc-100 hover:text-zinc-900 hover:shadow-lg"
+  class={`p-3 rounded-lg font-mono text-xs uppercase leading-none tracking-wider shadow-sm transition ${
+    isSecondary
+      ? "bg-transparent text-zinc-100 border border-zinc-700 hover:bg-zinc-100 hover:border-zinc-100 hover:text-zinc-900 hover:shadow-lg"
+      : "bg-white text-zinc-900 border-none hover:bg-zinc-200 hover:shadow-lg"
+  }`}
   data-value={text}
-  >{text}
+>
+  {text}
 </button>
 
 <script>

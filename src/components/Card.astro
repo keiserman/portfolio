@@ -1,0 +1,9 @@
+---
+const { title, text } = Astro.props;
+---
+
+<div class="card flex flex-col gap-6">
+  <slot />
+  <div class="text-2xl">{title}</div>
+  <p class="text-base text-zinc-400">{text}</p>
+</div>

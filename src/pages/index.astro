@@ -2,78 +2,112 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ProjectList from "../components/ProjectList.astro";
 import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import Badge from "../components/Badge.astro";
+import Header from "../components/Navbar.astro";
 ---
 
 <MainLayout>
-  <section class="bg-zinc-900 text-white">
+  <section class="pt-4">
     <div class="padding-global">
-      <div
-        class="container flex items-center bg-gradient-to-b from-zinc-900 to-zinc-800 px-10 py-32 rounded-lg"
-      >
-        <div class="max-w-3xl flex flex-col gap-8">
+      <div class="card container flex text-center justify-center relative">
+        <Header />
+        <div class="max-w-4xl pt-36 pb-32 flex flex-col gap-8">
           <h1>
             Your Go-To Webflow Developer for Pixel-Perfect, Responsive, and
             SEO-Optimized Websites
           </h1>
-          <p class="text-lg text-zinc-400 max-w-2xl">
+          <p class="m-auto max-w-2xl text-lg text-zinc-400">
             Specializing in pixel-perfect Webflow development, I turn detailed
             designs into high-performing, responsive websites with advanced
             functionality.
           </p>
-          <div class="flex gap-4">
+          <div class="flex gap-4 justify-center">
             <Button text="Start a project" />
-            <Button text="Learn more" />
+            <Button text="Learn more" variant="secondary" />
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="py-0 bg-zinc-900 text-white">
+  <section class="section">
+    <div class="padding-global">
+      <div class="container">
+        <h2 class="text-center mb-14">What I can do for You</h2>
+        <div class="grid md:grid-cols-3 grid-cols-1 gap-6">
+          <Card
+            title="Webflow Development"
+            text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
+          />
+          <Card
+            title="SEO Optimization"
+            text="From the ground up, your website will be optimized for search engines. I ensure proper use of semantic HTML, heading tags, OG images, meta descriptions, and alt tags, giving your site the best chance to rank well and attract organic traffic."
+          />
+          <Card
+            title="Web Design"
+            text="As both a designer and developer, I bridge the gap between creative vision and execution. Whether you need a design from scratch or want to refine existing ones, I understand both worlds and ensure your site looks great and works flawlessly."
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
     <div class="padding-global">
       <div class="container">
         <div class="flex flex-col">
-          <h2 class="mb-6">Projects</h2>
+          <h2 class="mb-14">Featured work</h2>
           <ProjectList />
         </div>
       </div>
     </div>
   </section>
-  <section class="bg-zinc-900 text-white">
-    <div class="container">
-      <h2 class="mb-6">Capabilities</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="border border-zinc-300 p-6 rounded-lg">
-          <div class="text-lg font-mono mb-12 text-zinc-400">(01)</div>
-          <div class="text-2xl mb-4 text-zinc-900">Design</div>
-          <div class="text-md text-zinc-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  <section class="section">
+    <div class="padding-global">
+      <div class="container">
+        <div class="grid grid-cols-2 gap-10">
+          <div class="flex flex-col gap-8">
+            <h2>How it works</h2>
+            <p class="text-lg text-zinc-400 max-w-lg">
+              My development process is designed to be straightforward and
+              transparent, ensuring that you're informed and comfortable every
+              step of the way.
+            </p>
+            <div class="flex">
+              <Button text="Start your project" variant="secondary" />
+            </div>
           </div>
-        </div>
-        <div class="border border-zinc-300 p-6 rounded-lg">
-          <div class="text-lg font-mono mb-12 text-zinc-400">(02)</div>
-          <div class="text-2xl mb-4 text-zinc-900">Development</div>
-          <div class="text-md text-zinc-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-          </div>
-        </div>
-        <div class="border border-zinc-300 p-6 rounded-lg">
-          <div class="text-lg font-mono mb-12 text-zinc-400">(03)</div>
-          <div class="text-2xl mb-4 text-zinc-900">UI/UX</div>
-          <div class="text-md text-zinc-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          <div class="flex flex-col gap-4">
+            <Card
+              title="Initial Consultation"
+              text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
+              ><div class="flex">
+                <Badge>Step 01</Badge>
+              </div></Card
+            >
+            <Card
+              title="Quote & Timeline"
+              text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
+              ><div class="flex">
+                <Badge>Step 02</Badge>
+              </div></Card
+            >
+            <Card
+              title="Development"
+              text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
+              ><div class="flex">
+                <Badge>Step 03</Badge>
+              </div></Card
+            >
+            <Card
+              title="Handover & Training"
+              text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
+              ><div class="flex">
+                <Badge>Step 04</Badge>
+              </div></Card
+            >
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="bg-zinc-900 text-white">
-    <div class="container">
-      <h2 class="mb-6" data-animate="heading">Lets work together</h2>
-      <p class="text-lg text-zinc-700 mb-6 max-w-xl">
-        Whether you need of design assistance or code tweaking, I can help take
-        your project to the next level.
-      </p>
-      <Button text="Get in touch" />
     </div>
   </section>
 </MainLayout>
