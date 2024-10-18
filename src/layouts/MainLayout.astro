@@ -1,7 +1,6 @@
 ---
-import Header from "../components/Header.astro";
+import Header from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import "@fontsource-variable/dm-sans";
 ---
 
 <html lang="en">
@@ -20,19 +19,27 @@ import "@fontsource-variable/dm-sans";
   </body>
 </html>
 <style is:global>
-  h1 {
-    @apply md:text-6xl text-4xl leading-tight;
+  body {
+    font-family: "Satoshi";
   }
 
-  h2 {
-    @apply md:text-5xl text-3xl leading-tight;
+  h1 {
+    @apply md:text-5xl text-4xl font-medium;
+  }
+
+  .padding-global {
+    @apply px-[5%];
   }
 
   .container {
-    @apply max-w-screen-xl m-auto px-4;
+    @apply max-w-screen-xl m-auto;
   }
 
   section {
     @apply md:py-24 py-14;
+  }
+
+  .navbar-link {
+    @apply text-zinc-400 hover:text-white;
   }
 </style>

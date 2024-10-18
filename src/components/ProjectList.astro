@@ -5,16 +5,16 @@ const projects = await Astro.glob("../content/projects/*.md");
 
 {
   projects.map((project) => (
-    <div class="grid md:grid-cols-3 gap-8 items-center border-zinc-300 border-t py-8">
+    <div class="grid md:grid-cols-3 gap-8 items-center border-zinc-700 border-t py-8">
       <div class="flex flex-col justify-between items-start h-full">
         <div class="flex flex-col items-start">
-          <div class="text-sm uppercase tracking-wider text-zinc-700 mb-4">
+          <div class="text-sm uppercase tracking-wider text-zinc-500 mb-4">
             {project.frontmatter.tag}
           </div>
           <h2 class="text-4xl mb-4" data-animate="heading">
             {project.frontmatter.title}
           </h2>
-          <p class="text-zinc-700 mb-4">{project.frontmatter.description}</p>
+          <p class="text-zinc-500 mb-4">{project.frontmatter.description}</p>
         </div>
 
         <Button text="View project" />

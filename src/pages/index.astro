@@ -5,29 +5,40 @@ import Button from "../components/Button.astro";
 ---
 
 <MainLayout>
-  <section>
-    <div class="container">
-      <div class="max-w-4xl">
-        <h1 class="mb-4">
-          Hello! I'm Kevin — <br />Web Designer & Developer
-        </h1>
-        <p class="text-lg text-zinc-700 mb-6 max-w-xl">
-          Bringing a design-first approach to front-end web development to
-          create intuitive and impactful user experiences.
-        </p>
-        <Button text="Get in touch" />
+  <section class="bg-zinc-900 text-white">
+    <div class="padding-global">
+      <div
+        class="container flex items-center bg-gradient-to-b from-zinc-900 to-zinc-800 px-10 py-32 rounded-lg"
+      >
+        <div class="max-w-3xl flex flex-col gap-8">
+          <h1>
+            Your Go-To Webflow Developer for Pixel-Perfect, Responsive, and
+            SEO-Optimized Websites
+          </h1>
+          <p class="text-lg text-zinc-400 max-w-2xl">
+            Specializing in pixel-perfect Webflow development, I turn detailed
+            designs into high-performing, responsive websites with advanced
+            functionality.
+          </p>
+          <div class="flex gap-4">
+            <Button text="Start a project" />
+            <Button text="Learn more" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <section class="py-0">
-    <div class="container">
-      <div class="flex flex-col py-4">
-        <h2 class="mb-6">Projects</h2>
-        <ProjectList />
+  <section class="py-0 bg-zinc-900 text-white">
+    <div class="padding-global">
+      <div class="container">
+        <div class="flex flex-col">
+          <h2 class="mb-6">Projects</h2>
+          <ProjectList />
+        </div>
       </div>
     </div>
   </section>
-  <section>
+  <section class="bg-zinc-900 text-white">
     <div class="container">
       <h2 class="mb-6">Capabilities</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -55,7 +66,7 @@ import Button from "../components/Button.astro";
       </div>
     </div>
   </section>
-  <section>
+  <section class="bg-zinc-900 text-white">
     <div class="container">
       <h2 class="mb-6" data-animate="heading">Lets work together</h2>
       <p class="text-lg text-zinc-700 mb-6 max-w-xl">

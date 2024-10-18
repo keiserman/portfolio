@@ -3,6 +3,45 @@ const { text } = Astro.props;
 ---
 
 <button
-  class="py-3 px-4 bg-transparent hover:bg-zinc-100 text-zinc-700 rounded-lg leading-none shadow-sm border border-zinc-300 transition"
+  class="p-3 bg-transparent text-zinc-100 rounded-md font-mono text-xs uppercase leading-none tracking-wider shadow-sm border border-zinc-700 transition hover:bg-zinc-100 hover:border-zinc-100 hover:text-zinc-900 hover:shadow-lg"
+  data-value={text}
   >{text}
 </button>
+
+<script>
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  function scrambleText(button) {
+    let iteration = 0;
+    const originalText = button.dataset.value;
+    let interval = setInterval(() => {
+      button.innerText = originalText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration) {
+            return originalText[index];
+          }
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
+
+      if (iteration >= originalText.length) {
+        clearInterval(interval);
+      }
+
+      iteration += 1 / 3;
+    }, 30);
+
+    button._interval = interval;
+  }
+
+  function restoreText(button) {
+    clearInterval(button._interval);
+    button.innerText = button.dataset.value;
+  }
+
+  document.querySelectorAll("button[data-value]").forEach((button) => {
+    button.addEventListener("mouseover", () => scrambleText(button));
+    button.addEventListener("mouseleave", () => restoreText(button));
+  });
+</script>
