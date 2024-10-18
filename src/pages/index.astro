@@ -5,6 +5,7 @@ import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import Badge from "../components/Badge.astro";
 import Header from "../components/Navbar.astro";
+import TestimonialList from "../components/TestimonialList.astro";
 ---
 
 <MainLayout>
@@ -12,7 +13,7 @@ import Header from "../components/Navbar.astro";
     <div class="padding-global">
       <div class="card container flex text-center justify-center relative">
         <Header />
-        <div class="max-w-4xl pt-36 pb-32 flex flex-col gap-8">
+        <div class="max-w-4xl pt-32 pb-24 flex flex-col gap-8">
           <h1>
             Your Go-To Webflow Developer for Pixel-Perfect, Responsive, and
             SEO-Optimized Websites
@@ -76,7 +77,7 @@ import Header from "../components/Navbar.astro";
               <Button text="Start your project" variant="secondary" />
             </div>
           </div>
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-6">
             <Card
               title="Initial Consultation"
               text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
@@ -106,6 +107,19 @@ import Header from "../components/Navbar.astro";
               </div></Card
             >
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="padding-global">
+      <div class="container">
+        <div class="card flex flex-col gap-8">
+          <h2 class="mb-14">
+            Don't just take my word for it—here's what my clients have to say
+            about working with me.
+          </h2>
+          <TestimonialList />
         </div>
       </div>
     </div>

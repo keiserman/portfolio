@@ -156,6 +156,22 @@ declare module 'astro:content' {
   data: any
 } & { render(): Render[".md"] };
 };
+"testimonials": {
+"testimonial1.md": {
+	id: "testimonial1.md";
+  slug: "testimonial1";
+  body: string;
+  collection: "testimonials";
+  data: any
+} & { render(): Render[".md"] };
+"testimonial2.md": {
+	id: "testimonial2.md";
+  slug: "testimonial2";
+  body: string;
+  collection: "testimonials";
+  data: any
+} & { render(): Render[".md"] };
+};
 
 	};
 
