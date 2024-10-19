@@ -3,33 +3,48 @@ import Button from "./Button.astro";
 ---
 
 <header class="w-full p-6 absolute top-0 bg-transparent z-50">
-  <div class="container flex items-center gap-4">
+  <div class="container flex items-center justify-between gap-4">
     <a href="/" class="text-white text-lg">Kevin Eiserman</a>
     <div id="nav-menu" class="md:block hidden grow">
       <div
-        class="md:flex md:flex-row md:bg-transparent md:relative md:top-0 md:p-0 gap-4 md:items-center flex flex-col absolute top-20 right-0 p-6 rounded-lg"
+        class="md:flex md:flex-row md:bg-transparent md:relative md:top-0 md:p-0 gap-4 md:items-center bg-zinc-900 flex flex-col absolute top-20 right-0 p-6 rounded-lg"
       >
-        <div class="flex gap-4 grow justify-center">
-          <a href="/about" class="navbar-link">About</a>
-          <a href="" class="navbar-link">Services</a>
-          <a href="" class="navbar-link">Process</a>
-          <a href="" class="navbar-link">Work</a>
-          <a href="" class="navbar-link">Pricing</a>
+        <div
+          class="flex md:flex-row flex-col md:gap-4 gap-2 grow justify-center"
+        >
+          <a href="/" class="navbar-link">About</a>
+          <a href="/" class="navbar-link">Services</a>
+          <a href="/" class="navbar-link">Process</a>
+          <a href="/" class="navbar-link">Work</a>
+          <a href="/" class="navbar-link">Pricing</a>
         </div>
         <Button text="Get in touch" variant="secondary" />
       </div>
     </div>
-    <div id="hamburger" class="flex flex-col gap-1.5 md:hidden z-50">
-      <span class="w-6 h-0.5 bg-white"></span>
-      <span class="w-6 h-0.5 bg-white"></span>
-      <span class="w-6 h-0.5 bg-white"></span>
+    <div
+      id="hamburger"
+      class="flex flex-col gap-1.5 md:hidden z-50 cursor-pointer"
+    >
+      <span data-hamburger="top" class="w-6 h-0.5 bg-white transition"></span>
+      <span data-hamburger="middle" class="w-6 h-0.5 bg-white transition"
+      ></span>
+      <span data-hamburger="bottom" class="w-6 h-0.5 bg-white transition"
+      ></span>
     </div>
   </div>
 </header>
 <script>
   const navMenu = document.querySelector("#nav-menu");
   const hamburger = document.querySelector("#hamburger");
+
+  const hamburgerTop = document.querySelector("[data-hamburger='top']");
+  const hamburgerMiddle = document.querySelector("[data-hamburger='middle']");
+  const hamburgerBottom = document.querySelector("[data-hamburger='bottom']");
+
   hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("hidden");
+    hamburgerTop.classList.toggle("hamburger-top");
+    hamburgerMiddle.classList.toggle("scale-x-0");
+    hamburgerBottom.classList.toggle("hamburger-bottom");
   });
 </script>
