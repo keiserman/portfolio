@@ -1,35 +1,40 @@
 ---
 import Button from "./Button.astro";
+import Logo from "./Logo.astro";
 ---
 
-<header class="w-full p-6 absolute top-0 bg-transparent z-50">
-  <div class="container flex items-center justify-between gap-4">
-    <a href="/" class="text-white text-lg">Kevin Eiserman</a>
-    <div id="nav-menu" class="md:block hidden grow">
-      <div
-        class="md:flex md:flex-row md:bg-transparent md:relative md:top-0 md:p-0 gap-4 md:items-center bg-zinc-900 flex flex-col absolute top-20 right-0 p-6 rounded-lg"
+<header class="w-full py-6 bg-transparent z-50">
+  <div class="padding-global">
+    <div class="container flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-2 text-white text-lg"
+        ><Logo />Kevin Eiserman</a
       >
+      <div id="nav-menu" class="md:block hidden grow">
         <div
-          class="flex md:flex-row flex-col md:gap-4 gap-2 grow justify-center"
+          class="md:flex md:flex-row md:bg-transparent md:relative md:p-0 gap-4 md:items-center md:top-0 md:right-0 bg-zinc-900 flex flex-col absolute top-20 right-[5%] p-6 rounded-lg z-30"
         >
-          <a href="/" class="navbar-link">About</a>
-          <a href="/" class="navbar-link">Services</a>
-          <a href="/" class="navbar-link">Process</a>
-          <a href="/" class="navbar-link">Work</a>
-          <a href="/" class="navbar-link">Pricing</a>
+          <div
+            class="flex md:flex-row flex-col md:gap-4 gap-2 grow justify-center"
+          >
+            <a href="/" class="navbar-link">About</a>
+            <a href="/" class="navbar-link">Services</a>
+            <a href="/" class="navbar-link">Process</a>
+            <a href="/" class="navbar-link">Work</a>
+            <a href="/" class="navbar-link">Pricing</a>
+          </div>
+          <Button text="Get in touch" variant="secondary" />
         </div>
-        <Button text="Get in touch" variant="secondary" />
       </div>
-    </div>
-    <div
-      id="hamburger"
-      class="flex flex-col gap-1.5 md:hidden z-50 cursor-pointer"
-    >
-      <span data-hamburger="top" class="w-6 h-0.5 bg-white transition"></span>
-      <span data-hamburger="middle" class="w-6 h-0.5 bg-white transition"
-      ></span>
-      <span data-hamburger="bottom" class="w-6 h-0.5 bg-white transition"
-      ></span>
+      <div
+        id="hamburger"
+        class="flex flex-col gap-1.5 md:hidden z-50 cursor-pointer"
+      >
+        <span data-hamburger="top" class="w-6 h-0.5 bg-white transition"></span>
+        <span data-hamburger="middle" class="w-6 h-0.5 bg-white transition"
+        ></span>
+        <span data-hamburger="bottom" class="w-6 h-0.5 bg-white transition"
+        ></span>
+      </div>
     </div>
   </div>
 </header>
@@ -43,8 +48,13 @@ import Button from "./Button.astro";
 
   hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("hidden");
-    hamburgerTop.classList.toggle("hamburger-top");
+
+    hamburgerTop.classList.toggle("rotate-45");
+    hamburgerTop.classList.toggle("translate-y-[400%]");
+
     hamburgerMiddle.classList.toggle("scale-x-0");
-    hamburgerBottom.classList.toggle("hamburger-bottom");
+
+    hamburgerBottom.classList.toggle("-rotate-45");
+    hamburgerBottom.classList.toggle("-translate-y-[400%]");
   });
 </script>

@@ -13,6 +13,7 @@ import "@fontsource/dm-mono";
     <title>Kevin Eiserman - Portfolio</title>
   </head>
   <body>
+    <Header />
     <main>
       <slot />
     </main>
@@ -25,11 +26,11 @@ import "@fontsource/dm-mono";
   }
 
   h1 {
-    @apply md:text-5xl text-4xl font-medium;
+    @apply md:text-5xl text-3xl font-medium;
   }
 
   h2 {
-    @apply md:text-5xl text-4xl font-medium;
+    @apply md:text-5xl text-3xl font-medium;
   }
 
   .padding-global {
@@ -50,13 +51,5 @@ import "@fontsource/dm-mono";
 
   .card {
     @apply px-8 py-10 rounded-xl bg-gradient-to-b from-zinc-950 to-zinc-900 border border-zinc-800;
-  }
-
-  .hamburger-top {
-    @apply rotate-45 translate-y-[400%];
-  }
-
-  .hamburger-bottom {
-    @apply -rotate-45 -translate-y-[400%];
   }
 </style>
