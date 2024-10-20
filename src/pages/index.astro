@@ -5,6 +5,7 @@ import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import Badge from "../components/Badge.astro";
 import TestimonialList from "../components/TestimonialList.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <MainLayout>
@@ -37,7 +38,8 @@ import TestimonialList from "../components/TestimonialList.astro";
           <Card
             title="Webflow Development"
             text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
-          />
+            ><Icon name="bounding-box" class="w-3" /></Card
+          >
           <Card
             title="SEO Optimization"
             text="From the ground up, your website will be optimized for search engines. I ensure proper use of semantic HTML, heading tags, OG images, meta descriptions, and alt tags, giving your site the best chance to rank well and attract organic traffic."

@@ -4,7 +4,7 @@ const isSecondary = variant === "secondary";
 ---
 
 <button
-  class={`p-3 rounded-lg font-mono text-xs uppercase leading-none tracking-wider shadow-sm transition ${
+  class={`p-3 rounded-lg flex items-center gap-2 font-mono text-xs uppercase leading-none tracking-wider shadow-sm transition ${
     isSecondary
       ? "bg-transparent text-zinc-600 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:border-zinc-100 dark:hover:text-zinc-900 hover:shadow-md"
       : "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 border-none dark:hover:bg-zinc-200 hover:shadow-md"
@@ -12,6 +12,7 @@ const isSecondary = variant === "secondary";
   data-value={text}
 >
   {text}
+  <slot />
 </button>
 
 <script>
@@ -21,7 +22,7 @@ const isSecondary = variant === "secondary";
     let iteration = 0;
     const originalText = button.dataset.value;
     let interval = setInterval(() => {
-      button.innerText = originalText
+      button.textContent = originalText
         .split("")
         .map((letter, index) => {
           if (index < iteration) {
@@ -43,7 +44,7 @@ const isSecondary = variant === "secondary";
 
   function restoreText(button) {
     clearInterval(button._interval);
-    button.innerText = button.dataset.value;
+    button.textContent = button.dataset.value;
   }
 
   document.querySelectorAll("button[data-value]").forEach((button) => {
