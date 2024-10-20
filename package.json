@@ -10,6 +10,7 @@
     "@astrojs/tailwind": "^5.1.2",
     "@fontsource-variable/dm-sans": "^5.0.6",
     "@fontsource/dm-mono": "^5.1.0",
+    "@iconify-json/ph": "^1.2.1",
     "acorn": "^7.4.1",
     "acorn-node": "^1.8.2",
     "acorn-walk": "^7.2.0",

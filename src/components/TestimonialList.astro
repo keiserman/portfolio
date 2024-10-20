@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const testimonials = await Astro.glob("../content/testimonials/*.md");
 ---
 
@@ -6,6 +8,7 @@ const testimonials = await Astro.glob("../content/testimonials/*.md");
   {
     testimonials.map((testimonial) => (
       <div class="flex flex-col gap-6 border border-zinc-200 dark:border-zinc-800 px-8 py-10 rounded-xl">
+        <Icon name="ph:quotes" class="icon" />
         <p class="text-base text-zinc-600 dark:text-zinc-400">
           {testimonial.frontmatter.text}
         </p>
