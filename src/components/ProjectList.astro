@@ -15,7 +15,9 @@ const projects = await Astro.glob("../content/projects/*.md");
             <h2 class="text-4xl mb-4" data-animate="heading">
               {project.frontmatter.title}
             </h2>
-            <p class="text-zinc-400 mb-4">{project.frontmatter.description}</p>
+            <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+              {project.frontmatter.description}
+            </p>
           </div>
 
           <Button text="View project" variant="secondary" />
@@ -23,7 +25,7 @@ const projects = await Astro.glob("../content/projects/*.md");
         <img
           src=""
           data-animate="element"
-          class="aspect-[3/2] col-span-2 bg-zinc-700 object-cover rounded-lg"
+          class="aspect-[3/2] col-span-2 bg-zinc-300 dark:bg-zinc-700 object-cover rounded-lg"
         />
       </div>
     ))

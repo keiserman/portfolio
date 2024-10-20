@@ -6,8 +6,8 @@ const isSecondary = variant === "secondary";
 <button
   class={`p-3 rounded-lg font-mono text-xs uppercase leading-none tracking-wider shadow-sm transition ${
     isSecondary
-      ? "bg-transparent text-zinc-100 border border-zinc-700 hover:bg-zinc-100 hover:border-zinc-100 hover:text-zinc-900 hover:shadow-lg"
-      : "bg-white text-zinc-900 border-none hover:bg-zinc-200 hover:shadow-lg"
+      ? "bg-transparent text-zinc-600 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:border-zinc-100 dark:hover:text-zinc-900 hover:shadow-md"
+      : "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 border-none dark:hover:bg-zinc-200 hover:shadow-md"
   }`}
   data-value={text}
 >
