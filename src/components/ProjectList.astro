@@ -1,31 +1,34 @@
 ---
 import Button from "../components/Button.astro";
 import Badge from "./Badge.astro";
-const projects = await Astro.glob("../content/projects/*.md");
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
 ---
 
 <div class="grid gap-8">
   {
     projects.map((project) => (
-      <div class="card grid md:grid-cols-3 gap-6 items-center">
+      <div class="card grid md:grid-cols-3 grid-cols-1 gap-6 items-center">
         <div class="flex flex-col justify-between items-start h-full">
           <div class="flex flex-col items-start">
-            <Badge>{project.frontmatter.tag}</Badge>
+            <Badge>{project.data.tag}</Badge>
 
             <h2 class="text-4xl mb-4" data-animate="heading">
-              {project.frontmatter.title}
+              {project.data.title}
             </h2>
             <p class="text-zinc-600 dark:text-zinc-400 mb-4">
-              {project.frontmatter.description}
+              {project.data.description}
             </p>
           </div>
 
           <Button text="View project" variant="secondary" />
         </div>
-        <img
-          src=""
-          data-animate="element"
-          class="aspect-[3/2] col-span-2 bg-zinc-300 dark:bg-zinc-700 object-cover rounded-lg"
+        <Image
+          src={project.data.image as string}
+          alt={project.data.title}
+          class="aspect-video col-span-2 bg-zinc-300 dark:bg-zinc-700 object-cover rounded-lg shadow-lg"
         />
       </div>
     ))
@@ -38,16 +41,19 @@ const projects = await Astro.glob("../content/projects/*.md");
   gsap.registerPlugin(ScrollTrigger);
 
   const elements = document.querySelectorAll("[data-animate='element'");
-  elements.forEach((element) => {
-    gsap.from(element, {
-      scrollTrigger: {
-        trigger: element,
-        scrub: 0.5,
-        start: "top center",
-        end: "bottom center",
-      },
-      scale: 0.9,
-      duration: 1,
+
+  if (elements.length) {
+    elements.forEach((element) => {
+      gsap.from(element, {
+        scrollTrigger: {
+          trigger: element,
+          scrub: 0.5,
+          start: "top center",
+          end: "bottom center",
+        },
+        scale: 0.9,
+        duration: 1,
+      });
     });
-  });
+  }
 </script>
