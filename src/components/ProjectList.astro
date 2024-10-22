@@ -26,7 +26,7 @@ const projects = await getCollection("projects");
           <Button text="View project" variant="secondary" />
         </div>
         <Image
-          src={project.data.image as string}
+          src={project.data.screenshot}
           alt={project.data.title}
           class="aspect-video col-span-2 bg-zinc-300 dark:bg-zinc-700 object-cover rounded-lg shadow-lg"
         />
