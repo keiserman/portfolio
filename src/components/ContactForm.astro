@@ -1,0 +1,34 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="card">
+  <form class="grid gap-4">
+    <div class="text-lg">How many unique pages does your site need?</div>
+    <div class="flex gap-2">
+      <Button text="1" variant="secondary" />
+      <Button text="2" variant="secondary" />
+      <Button text="3" variant="secondary" />
+      <Button text="4" variant="secondary" />
+      <Button text="5" variant="secondary" />
+      <Button text="6" variant="secondary" />
+      <Button text="7" variant="secondary" />
+      <Button text="8" variant="secondary" />
+    </div>
+
+    <div class="text-lg">What level of animation do you need?</div>
+    <div class="flex gap-2">
+      <Button text="Simple" variant="secondary" />
+      <Button text="Complex" variant="secondary" />
+    </div>
+    <label class="flex flex-col gap-2">
+      Name:
+      <input type="text" name="name" />
+    </label>
+    <label class="flex flex-col gap-2">
+      Email:
+      <input type="email" name="email" />
+    </label>
+    <Button text="Submit" variant="secondary" />
+  </form>
+</div>

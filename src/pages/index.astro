@@ -5,6 +5,7 @@ import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import Badge from "../components/Badge.astro";
 import TestimonialList from "../components/TestimonialList.astro";
+import ContactForm from "../components/ContactForm.astro";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -123,6 +124,23 @@ import { Icon } from "astro-icon/components";
           </h2>
           <TestimonialList />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="padding-global">
+      <div class="container grid md:grid-cols-2 items-center gap-6">
+        <div class="flex flex-col gap-6 items-start">
+          <h2>How much will my website cost?</h2>
+          <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-lg">
+            My development process is designed to be straightforward and
+            transparent, ensuring that you're informed and comfortable every
+            step of the way.
+          </p>
+          <Button text="Start your project" variant="secondary" />
+        </div>
+        <ContactForm />
       </div>
     </div>
   </section>
