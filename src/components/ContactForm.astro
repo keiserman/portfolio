@@ -5,15 +5,39 @@ import Button from "./Button.astro";
 <div class="card">
   <form class="grid gap-4">
     <div class="text-lg">How many unique pages does your site need?</div>
-    <div class="flex gap-2">
-      <Button text="1" variant="secondary" />
-      <Button text="2" variant="secondary" />
-      <Button text="3" variant="secondary" />
-      <Button text="4" variant="secondary" />
-      <Button text="5" variant="secondary" />
-      <Button text="6" variant="secondary" />
-      <Button text="7" variant="secondary" />
-      <Button text="8" variant="secondary" />
+    <div class="grid grid-cols-8 gap-2">
+      <label class="relative">
+        <input type="radio" name="option" class="sr-only peer" value="1" />
+        <div class="page-number">1</div>
+      </label>
+      <label class="relative">
+        <input type="radio" name="option" class="sr-only peer" value="2" />
+        <div class="page-number">2</div>
+      </label>
+      <label class="relative">
+        <input type="radio" name="option" class="sr-only peer" value="2" />
+        <div class="page-number">3</div>
+      </label>
+      <label class="relative">
+        <input type="radio" name="option" class="sr-only peer" value="2" />
+        <div class="page-number">4</div>
+      </label>
+      <label class="relative">
+        <input type="radio" name="option" class="sr-only peer" value="2" />
+        <div class="page-number">5</div>
+      </label>
+      <label class="relative">
+        <input type="radio" name="option" class="sr-only peer" value="2" />
+        <div class="page-number">6</div>
+      </label>
+      <label class="relative">
+        <input type="radio" name="option" class="sr-only peer" value="2" />
+        <div class="page-number">7</div>
+      </label>
+      <label class="relative">
+        <input type="radio" name="option" class="sr-only peer" value="2" />
+        <div class="page-number">8</div>
+      </label>
     </div>
 
     <div class="text-lg">What level of animation do you need?</div>
@@ -32,3 +56,9 @@ import Button from "./Button.astro";
     <Button text="Submit" variant="secondary" />
   </form>
 </div>
+
+<style>
+  .page-number {
+    @apply p-4 flex justify-center items-center border border-zinc-700 rounded-lg peer-checked:bg-white peer-checked:text-black hover:bg-zinc-800 cursor-pointer;
+  }
+</style>
