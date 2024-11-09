@@ -22,7 +22,13 @@ export default defineConfig({
             delete: true,
             fields: [
               { name: "title", widget: "string", label: "Title" },
-              { name: "tag", widget: "string", label: "Tag" },
+              {
+                name: "tag",
+                label: "Tag",
+                widget: "select",
+                options: ["Design", "Development"],
+                multiple: true,
+              },
               { name: "description", widget: "string", label: "Description" },
               { name: "image", widget: "image", label: "Image" },
             ],
