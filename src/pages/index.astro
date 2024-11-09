@@ -70,8 +70,8 @@ import { Icon } from "astro-icon/components";
   <section class="section">
     <div class="padding-global">
       <div class="container">
-        <div class="grid md:grid-cols-2 gap-10">
-          <div class="flex flex-col gap-8">
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div class="flex flex-col sticky top-1/4 gap-8">
             <h2>How it works</h2>
             <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-lg">
               My development process is designed to be straightforward and
@@ -84,6 +84,7 @@ import { Icon } from "astro-icon/components";
           </div>
           <div class="flex flex-col gap-6">
             <Card
+              data-animate="fade"
               title="Initial Consultation"
               text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
               ><div class="flex">
@@ -91,6 +92,7 @@ import { Icon } from "astro-icon/components";
               </div></Card
             >
             <Card
+              data-animate="fade"
               title="Quote & Timeline"
               text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
               ><div class="flex">
@@ -98,6 +100,7 @@ import { Icon } from "astro-icon/components";
               </div></Card
             >
             <Card
+              data-animate="fade"
               title="Development"
               text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
               ><div class="flex">
@@ -105,6 +108,7 @@ import { Icon } from "astro-icon/components";
               </div></Card
             >
             <Card
+              data-animate="fade"
               title="Handover & Training"
               text="I specialize in Webflow development, creating websites that are not only visually stunning but also packed with advanced functionality. Whether you need complex layouts, intricate animations, or custom JavaScript solutions, I've got you covered."
               ><div class="flex">
@@ -147,3 +151,25 @@ import { Icon } from "astro-icon/components";
     </div>
   </section>
 </MainLayout>
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const elements = document.querySelectorAll("[data-animate='fade'");
+
+  elements.forEach((element) => {
+    gsap.from(element, {
+      opacity: 0.2,
+      scale: 0.9,
+      filter: "blur(2px)",
+      scrollTrigger: {
+        trigger: element,
+        start: "top 80%",
+        end: "60% 80%",
+        scrub: true,
+        markers: true,
+      },
+    });
+  });
+</script>
