@@ -36,7 +36,9 @@ import { Icon } from "astro-icon/components";
   <section class="section">
     <div class="padding-global">
       <div class="container">
-        <h2 class="text-center mb-14">What I can do for You</h2>
+        <h2 data-animate="text" class="text-center mb-14">
+          What I can do for You
+        </h2>
         <div class="grid md:grid-cols-3 grid-cols-1 gap-6">
           <Card
             title="Webflow Development"
@@ -61,7 +63,7 @@ import { Icon } from "astro-icon/components";
     <div class="padding-global">
       <div class="container">
         <div class="flex flex-col">
-          <h2 class="mb-14">Featured work</h2>
+          <h2 data-animate="text" class="mb-14">Featured work</h2>
           <ProjectList />
         </div>
       </div>
@@ -71,8 +73,8 @@ import { Icon } from "astro-icon/components";
     <div class="padding-global">
       <div class="container">
         <div class="grid md:grid-cols-2 gap-10 items-start">
-          <div class="flex flex-col sticky top-1/4 gap-8">
-            <h2>How it works</h2>
+          <div class="flex flex-col md:sticky top-1/4 gap-8">
+            <h2 data-animate="text">How it works</h2>
             <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-lg">
               My development process is designed to be straightforward and
               transparent, ensuring that you're informed and comfortable every
@@ -124,7 +126,7 @@ import { Icon } from "astro-icon/components";
     <div class="padding-global">
       <div class="container">
         <div class="card flex flex-col gap-8">
-          <h2 class="mb-14">
+          <h2 data-animate="text" class="mb-14">
             Don't just take my word for it—here's what my clients have to say
             about working with me.
           </h2>
@@ -138,7 +140,7 @@ import { Icon } from "astro-icon/components";
     <div class="padding-global">
       <div class="container grid md:grid-cols-2 items-center gap-6">
         <div class="flex flex-col gap-6 items-start">
-          <h2>How much will my website cost?</h2>
+          <h2 data-animate="text">How much will my website cost?</h2>
           <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-lg">
             My development process is designed to be straightforward and
             transparent, ensuring that you're informed and comfortable every
@@ -154,21 +156,49 @@ import { Icon } from "astro-icon/components";
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
   gsap.registerPlugin(ScrollTrigger);
 
-  const elements = document.querySelectorAll("[data-animate='fade'");
+  (() => {
+    const elements = document.querySelectorAll("[data-animate='fade'");
 
-  elements.forEach((element) => {
-    gsap.from(element, {
-      opacity: 0.2,
-      scale: 0.9,
-      filter: "blur(2px)",
-      scrollTrigger: {
-        trigger: element,
-        start: "top 80%",
-        end: "60% 80%",
-        scrub: true,
-      },
+    elements.forEach((element) => {
+      gsap.from(element, {
+        opacity: 0.2,
+        scale: 0.8,
+        filter: "blur(2px)",
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          end: "bottom 80%",
+          scrub: 0.5,
+        },
+      });
     });
-  });
+  })();
+
+  (() => {
+    const elements = Array.from(
+      document.querySelectorAll("[data-animate='text'")
+    ) as HTMLElement[];
+
+    new SplitType(elements, {
+      types: "lines,words,chars",
+      tagName: "span",
+    });
+
+    elements.forEach((element) => {
+      gsap.from(element.querySelectorAll(".char"), {
+        scrollTrigger: {
+          trigger: element,
+          start: "top 60%",
+          end: "bottom 60%",
+          scrub: 0.5,
+        },
+        opacity: 0.25,
+        stagger: 0.1,
+      });
+    });
+  })();
 </script>

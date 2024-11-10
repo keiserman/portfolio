@@ -1,0 +1,66 @@
+<div data-animate="grid" class="w-full h-full flex flex-wrap"></div>
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const grid = document.querySelector("[data-animate='grid']");
+
+  if (grid) {
+    const fragment = document.createDocumentFragment();
+    const rowLength = 300;
+
+    for (let i = 0; i < rowLength; i++) {
+      const gridItem = document.createElement("div");
+      const gridNumber = Math.round(Math.random());
+
+      // Set initial content and data attributes
+      gridItem.textContent = gridNumber.toString();
+      gridItem.setAttribute("data-grid-number", gridNumber); // Store grid number in a data attribute
+      gridItem.setAttribute("data-opacity", "0.1"); // Store opacity in a data attribute
+      gridItem.style.opacity = "0.1";
+
+      // Apply Tailwind classes
+      gridItem.className =
+        "transition flex items-center justify-center w-10 h-10 text-xl";
+
+      // Mouse enter event
+      gridItem.onmouseenter = () => {
+        let currentGridNumber = parseInt(
+          gridItem.getAttribute("data-grid-number")
+        );
+        currentGridNumber = currentGridNumber === 1 ? 0 : 1;
+
+        // Update the grid number and display it
+        gridItem.textContent = currentGridNumber.toString();
+        gridItem.setAttribute("data-grid-number", currentGridNumber);
+
+        // Update opacity
+        gridItem.style.opacity = "1";
+        gridItem.setAttribute("data-opacity", "1");
+      };
+
+      // Mouse leave event
+      gridItem.onmouseleave = () => {
+        let currentGridNumber = parseInt(
+          gridItem.getAttribute("data-grid-number")
+        );
+        currentGridNumber = currentGridNumber === 1 ? 0 : 1;
+
+        setTimeout(() => {
+          // Update the grid number and display it
+          gridItem.textContent = currentGridNumber.toString();
+          gridItem.setAttribute("data-grid-number", currentGridNumber);
+
+          // Reset opacity
+          gridItem.style.opacity = "0.1";
+          gridItem.setAttribute("data-opacity", "0.1");
+        }, 200);
+      };
+
+      fragment.appendChild(gridItem);
+    }
+
+    grid.appendChild(fragment);
+  }
+</script>
