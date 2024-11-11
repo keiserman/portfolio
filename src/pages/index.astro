@@ -26,8 +26,8 @@ import { Icon } from "astro-icon/components";
             functionality.
           </p>
           <div class="flex gap-4 justify-center">
-            <Button text="Start a project" />
-            <Button text="Learn more" variant="secondary" />
+            <Button url="/" text="Start a project" />
+            <Button url="/" text="Learn more" variant="secondary" />
           </div>
         </div>
       </div>
@@ -166,7 +166,7 @@ import { Icon } from "astro-icon/components";
     elements.forEach((element) => {
       gsap.from(element, {
         opacity: 0.2,
-        scale: 0.8,
+        scale: 0.9,
         filter: "blur(2px)",
         scrollTrigger: {
           trigger: element,

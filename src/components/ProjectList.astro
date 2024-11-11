@@ -28,7 +28,12 @@ const projects = await getCollection("projects");
             </p>
           </div>
 
-          <Button text="View project" variant="secondary" />
+          <Button
+            url={project.data.link}
+            target="_blank"
+            text="View site"
+            variant="secondary"
+          />
         </div>
         <img
           src={project.data.image}

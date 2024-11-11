@@ -6,6 +6,7 @@ const projects = defineCollection({
     tag: z.array(z.enum(["Design", "Development"])),
     description: z.string(),
     image: z.string(),
+    link: z.string(),
   }),
 });
 

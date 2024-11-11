@@ -13,6 +13,9 @@ export default defineConfig({
           name: "git-gateway",
           branch: "main",
         },
+        editor: {
+          preview: false,
+        },
         collections: [
           {
             name: "projects",
@@ -30,6 +33,7 @@ export default defineConfig({
                 multiple: true,
               },
               { name: "description", widget: "string", label: "Description" },
+              { name: "link", widget: "string", label: "Link" },
               { name: "image", widget: "image", label: "Image" },
             ],
           },
