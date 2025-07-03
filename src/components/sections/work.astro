@@ -1,0 +1,51 @@
+---
+import Button from "../../components/Button.astro";
+import Badge from ".././Badge.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+---
+
+<section class="section bg-zinc-950 text-white">
+  <div class="padding-global">
+    <div class="container">
+      <div class="flex flex-col">
+        <h2 class="mb-14">Featured work</h2>
+        <div class="grid gap-8">
+          {
+            projects.map((project) => (
+              <div class="px-6 py-6 bg-zinc-900 rounded-lg grid md:grid-cols-3 grid-cols-1 gap-6 items-center">
+                <div class="flex flex-col justify-between items-start gap-6 h-full">
+                  <div class="flex flex-col items-start gap-6">
+                    <div class="flex gap-2">
+                      {project.data.tag.map((tag) => (
+                        <Badge key={tag}>{tag}</Badge>
+                      ))}
+                    </div>
+
+                    <h3 data-animate="heading">{project.data.title}</h3>
+                    <p class="text-zinc-400 dark:text-zinc-400">
+                      {project.data.description}
+                    </p>
+                  </div>
+
+                  <Button
+                    url={project.data.link}
+                    target="_blank"
+                    text="View site"
+                    variant="secondary"
+                  />
+                </div>
+                <img
+                  src={project.data.image}
+                  alt={project.data.title}
+                  class="aspect-video col-span-2 bg-zinc-300 dark:bg-zinc-700 object-cover rounded-lg shadow-lg"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

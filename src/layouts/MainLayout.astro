@@ -1,8 +1,7 @@
 ---
 import Header from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import "@fontsource-variable/dm-sans";
-import "@fontsource/dm-mono";
+import "../styles/global.css";
 ---
 
 <html lang="en">
@@ -20,57 +19,3 @@ import "@fontsource/dm-mono";
     <Footer />
   </body>
 </html>
-<style is:global>
-  @font-face {
-    font-family: "Uncut Sans";
-    src: url("/fonts/UncutSans-Variable.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  body {
-    @apply bg-neutral-50 text-neutral-950 dark:bg-neutral-950 dark:text-white;
-  }
-
-  h1 {
-    @apply text-4xl md:text-5xl font-medium;
-  }
-
-  h2 {
-    @apply text-3xl md:text-4xl font-medium;
-  }
-
-  h3 {
-    @apply text-2xl md:text-3xl;
-  }
-
-  .padding-global {
-    @apply md:px-6 px-4;
-  }
-
-  .container {
-    @apply max-w-screen-xl m-auto;
-  }
-
-  .section {
-    @apply md:py-32 py-14;
-  }
-
-  .navbar-link {
-    @apply text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white;
-  }
-
-  .card {
-    @apply px-6 py-8 rounded-xl bg-gradient-to-b 
-    from-neutral-100 to-neutral-50 border-neutral-200 dark:from-neutral-950 dark:to-neutral-900 border dark:border-neutral-800;
-  }
-
-  .icon {
-    @apply size-10 p-2 bg-neutral-200 dark:text-neutral-300 dark:bg-neutral-800 rounded-md;
-  }
-
-  input {
-    @apply px-1 py-2 bg-transparent border border-neutral-700 rounded-lg;
-  }
-</style>

@@ -27,7 +27,7 @@
       // Mouse enter event
       gridItem.onmouseenter = () => {
         let currentGridNumber = parseInt(
-          gridItem.getAttribute("data-grid-number")
+          gridItem.getAttribute("data-grid-number"),
         );
         currentGridNumber = currentGridNumber === 1 ? 0 : 1;
 
@@ -43,7 +43,7 @@
       // Mouse leave event
       gridItem.onmouseleave = () => {
         let currentGridNumber = parseInt(
-          gridItem.getAttribute("data-grid-number")
+          gridItem.getAttribute("data-grid-number"),
         );
         currentGridNumber = currentGridNumber === 1 ? 0 : 1;
 

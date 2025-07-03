@@ -1,0 +1,170 @@
+---
+
+---
+
+<div
+  class="px-6 py-8 rounded-xl bg-zinc-900 border border-zinc-900 text-white flex flex-col gap-6"
+>
+  <h2 class="text-2xl font-bold">Pricing Calculator</h2>
+
+  <!-- Number of Pages -->
+  <div class="space-y-2">
+    <label for="pages" class="block text-zinc-200 font-semibold">
+      How many unique pages does your site have?
+    </label>
+    <p class="text-sm text-zinc-400 italic">
+      Count only unique page designs you need developed. For example, a CMS
+      template page (like blog posts or projects) only counts once, even if you
+      have many items.
+    </p>
+    <input
+      type="number"
+      id="pages"
+      min="1"
+      max="50"
+      value="1"
+      class="w-full px-3 py-2 rounded-md bg-zinc-900 border border-zinc-700 text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-zinc-200 font-semibold">
+      What is the typical complexity of your pages?
+    </label>
+    <p class="text-sm text-zinc-400 italic">
+      Page complexity is usually based on how many sections a page has. Simple
+      pages might have 2–4 sections, Standard 8–12 sections, and Complex pages
+      can be long, highly detailed, or have many custom sections.
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <div>
+        <input
+          type="radio"
+          id="simple"
+          name="complexity"
+          value="simple"
+          class="peer hidden"
+          checked
+        />
+        <label for="simple" class="radio-label"> Simple ($250/page) </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="standard"
+          name="complexity"
+          value="standard"
+          class="peer hidden"
+        />
+        <label for="standard" class="radio-label"> Standard ($500/page) </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="complex"
+          name="complexity"
+          value="complex"
+          class="peer hidden"
+        />
+        <label for="complex" class="radio-label"> Complex ($500/page) </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-zinc-200 font-semibold">
+      Select Animation Level
+    </label>
+    <p class="text-sm text-zinc-400 italic">
+      Animation level refers to how interactive and dynamic your site is.
+      Standard includes subtle fades and slides, while Complex adds advanced
+      scroll-based animations or storytelling effects.
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <div>
+        <input
+          type="radio"
+          id="animation-standard"
+          name="animation"
+          value="standard"
+          checked
+          class="peer hidden"
+        />
+        <label for="animation-standard" class="radio-label">
+          Standard (included)
+        </label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="animation-complex"
+          name="animation"
+          value="complex"
+          class="peer hidden"
+        />
+        <label for="animation-complex" class="radio-label">
+          Complex (+$150/page)
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-xl font-bold border-t border-zinc-700 pt-4">
+    Total: <span id="total" class="text-primary">0</span>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const pagesInput = document.getElementById("pages");
+      const totalEl = document.getElementById("total");
+
+      const complexityRadios = document.getElementsByName("complexity");
+      const animationRadios = document.getElementsByName("animation");
+
+      function getComplexityRate() {
+        let rate = 0;
+        complexityRadios.forEach((r) => {
+          if ((r as HTMLInputElement).checked) {
+            const value = (r as HTMLInputElement).value;
+            if (value === "simple") rate = 250;
+            if (value === "standard") rate = 500;
+            if (value === "complex") rate = 750;
+          }
+        });
+        return rate;
+      }
+
+      function getAnimationAddon() {
+        let addon = 0;
+        animationRadios.forEach((r) => {
+          if (
+            (r as HTMLInputElement).checked &&
+            (r as HTMLInputElement).value === "complex"
+          ) {
+            addon = 150;
+          }
+        });
+        return addon;
+      }
+
+      function calculateTotal() {
+        const pages = parseInt((pagesInput as HTMLInputElement).value, 10) || 1;
+        const complexityRate = getComplexityRate();
+        const animationAddon = getAnimationAddon();
+
+        const total = (complexityRate + animationAddon) * pages;
+        totalEl.textContent = `$${total}`;
+      }
+
+      pagesInput.addEventListener("input", calculateTotal);
+      complexityRadios.forEach((r) =>
+        r.addEventListener("change", calculateTotal),
+      );
+      animationRadios.forEach((r) =>
+        r.addEventListener("change", calculateTotal),
+      );
+
+      calculateTotal();
+    });
+  </script>
+</div>

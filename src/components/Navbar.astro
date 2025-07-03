@@ -1,19 +1,17 @@
 ---
 import Button from "./Button.astro";
-import ThemeToggle from "./ThemeToggle.astro";
+import Logo from "./Logo.astro";
 ---
 
-<header
-  class="w-full py-6 bg-neutral-50/90 dark:bg-neutral-950/80 fixed top-0 z-50 backdrop-blur"
->
+<header class="w-full py-6 absolute top-0 z-50">
   <div class="padding-global">
     <div class="container flex items-center justify-between gap-4">
-      <a href="/" class="flex items-center gap-2 dark:text-white text-lg"
-        >Kevin Eiserman</a
+      <a href="/" class="flex items-center gap-2 text-white text-lg"
+        ><Logo />Kevin Eiserman</a
       >
       <div id="nav-menu" class="md:block hidden grow">
         <div
-          class="md:flex md:flex-row md:bg-transparent md:relative md:p-0 gap-4 md:items-center md:top-0 md:right-0 dark:md:bg-transparent bg-neutral-100 dark:bg-neutral-900 flex flex-col absolute top-20 right-[5%] p-6 rounded-lg z-30 md:shadow-none shadow-lg"
+          class="md:flex md:flex-row md:relative md:p-0 gap-4 md:items-center md:top-0 md:right-0 md:bg-transparent bg-zinc-900 flex flex-col absolute top-20 right-[5%] p-6 rounded-lg z-30 md:shadow-none shadow-lg"
         >
           <div
             class="flex md:flex-row flex-col md:gap-4 gap-2 grow justify-center"
@@ -28,20 +26,16 @@ import ThemeToggle from "./ThemeToggle.astro";
         </div>
       </div>
       <div class="flex gap-4 items-center">
-        <ThemeToggle />
         <div
           id="hamburger"
           class="flex flex-col gap-1.5 md:hidden z-50 cursor-pointer"
         >
-          <span
-            data-hamburger="top"
-            class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
-          <span
-            data-hamburger="middle"
-            class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
-          <span
-            data-hamburger="bottom"
-            class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
+          <span data-hamburger="top" class="w-6 h-0.5 bg-white transition"
+          ></span>
+          <span data-hamburger="middle" class="w-6 h-0.5 bg-white transition"
+          ></span>
+          <span data-hamburger="bottom" class="w-6 h-0.5 bg-white transition"
+          ></span>
         </div>
       </div>
     </div>
