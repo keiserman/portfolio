@@ -4,64 +4,64 @@ import Testimonials from "../components/sections/testimonials.astro";
 import Hero from "../components/sections/hero.astro";
 import Services from "../components/sections/services.astro";
 import Work from "../components/sections/work.astro";
-import Pricing from "../components/sections/pricing.astro";
 import Process from "../components/sections/process.astro";
+import PricingSection from "../components/sections/pricing-section.astro";
 ---
 
 <MainLayout>
   <Hero />
-  <Services />
   <Work />
+  <Services />
   <Process />
   <Testimonials />
-  <Pricing />
+  <PricingSection />
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import SplitType from "split-type";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    (() => {
+      const elements = document.querySelectorAll("[data-animate='fade'");
+
+      elements.forEach((element) => {
+        gsap.from(element, {
+          opacity: 0.2,
+          scale: 0.9,
+          filter: "blur(2px)",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            end: "bottom 80%",
+            scrub: 0.5,
+          },
+        });
+      });
+    })();
+
+    (() => {
+      const elements = Array.from(
+        document.querySelectorAll("[data-animate='text'"),
+      ) as HTMLElement[];
+
+      new SplitType(elements, {
+        types: "lines,words,chars",
+        tagName: "span",
+      });
+
+      elements.forEach((element) => {
+        gsap.from(element.querySelectorAll(".char"), {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 60%",
+            end: "bottom 60%",
+            scrub: 0.5,
+          },
+          opacity: 0.25,
+          stagger: 0.1,
+        });
+      });
+    })();
+  </script>
 </MainLayout>
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import SplitType from "split-type";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  (() => {
-    const elements = document.querySelectorAll("[data-animate='fade'");
-
-    elements.forEach((element) => {
-      gsap.from(element, {
-        opacity: 0.2,
-        scale: 0.9,
-        filter: "blur(2px)",
-        scrollTrigger: {
-          trigger: element,
-          start: "top 80%",
-          end: "bottom 80%",
-          scrub: 0.5,
-        },
-      });
-    });
-  })();
-
-  (() => {
-    const elements = Array.from(
-      document.querySelectorAll("[data-animate='text'"),
-    ) as HTMLElement[];
-
-    new SplitType(elements, {
-      types: "lines,words,chars",
-      tagName: "span",
-    });
-
-    elements.forEach((element) => {
-      gsap.from(element.querySelectorAll(".char"), {
-        scrollTrigger: {
-          trigger: element,
-          start: "top 60%",
-          end: "bottom 60%",
-          scrub: 0.5,
-        },
-        opacity: 0.25,
-        stagger: 0.1,
-      });
-    });
-  })();
-</script>

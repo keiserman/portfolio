@@ -47,6 +47,6 @@ input {
 }
 
 .radio-label {
-  @apply inline-block px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-200 cursor-pointer transition-all
+  @apply w-full text-center inline-block p-6 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-200 cursor-pointer transition-all
       peer-checked:bg-primary peer-checked:text-black peer-checked:border-primary;
 }
