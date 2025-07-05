@@ -1,7 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
 
-const testimonials = await Astro.glob("../../content/testimonials/*.md");
+const testimonials = await getCollection("testimonials");
 ---
 
 <section class="section bg-zinc-950 text-white">
@@ -17,10 +18,8 @@ const testimonials = await Astro.glob("../../content/testimonials/*.md");
             testimonials.map((testimonial) => (
               <div class="flex flex-col gap-6 border border-zinc-800 dark:border-zinc-800 px-6 py-8 md:px-8 md:py-10 rounded-xl">
                 <Icon name="ph:quotes" class="icon" />
-                <p class="text-base text-zinc-400">
-                  {testimonial.frontmatter.text}
-                </p>
-                <div class="text-xl">{testimonial.frontmatter.name}</div>
+                <p class="text-base text-zinc-400">{testimonial.data.text}</p>
+                <div class="text-xl">{testimonial.data.name}</div>
               </div>
             ))
           }
