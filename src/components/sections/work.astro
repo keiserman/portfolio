@@ -41,7 +41,7 @@ const projects = await sanityClient.fetch(
                 </div>
                 <div class="md:col-span-3">
                   <img
-                    src={urlFor(project.image).width(1200).url()}
+                    src={urlFor(project.image).width(1200).auto('format').quality(80).url()}
                     alt={project.title}
                     class="w-full h-full object-cover aspect-video md:aspect-auto"
                   />
