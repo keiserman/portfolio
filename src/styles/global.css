@@ -47,7 +47,7 @@ h3 {
 }
 
 .card {
-  @apply px-5 py-6 rounded-lg bg-zinc-900 border border-zinc-700;
+  @apply px-5 py-8 rounded-lg bg-zinc-900 border border-zinc-700;
 }
 
 .icon {
