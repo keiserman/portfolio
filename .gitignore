@@ -2,3 +2,6 @@
 tailwind.config.js
 tsconfig.json
 /dist
+/.astro
+/.sanity
+.env

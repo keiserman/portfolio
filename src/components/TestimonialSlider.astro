@@ -1,20 +1,22 @@
 ---
 import "swiper/css";
 import { Icon } from "astro-icon/components";
-import { getCollection } from "astro:content";
+import { sanityClient } from "../lib/sanity";
 
-const testimonials = await getCollection("testimonials");
+const testimonials = await sanityClient.fetch(
+  `*[_type == "testimonial"] | order(order asc) { name, role, text }`
+);
 ---
 
 <section class="swiper overflow-hidden">
   <div class="swiper-wrapper">
     {
-      testimonials.map((testimonial) => (
+      testimonials.map((testimonial: any) => (
         <div class="swiper-slide">
           <div class="flex flex-col gap-6 border border-zinc-800 dark:border-zinc-800 px-6 py-8 md:px-8 md:py-10 rounded-xl">
             <Icon name="ph:quotes" class="icon" />
-            <p class="text-base text-zinc-400">{testimonial.data.text}</p>
-            <div class="text-xl">{testimonial.data.name}</div>
+            <p class="text-base text-zinc-400">{testimonial.text}</p>
+            <div class="text-xl">{testimonial.name}</div>
           </div>
         </div>
       ))
