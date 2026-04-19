@@ -1,8 +1,9 @@
 ---
 import Button from "../../components/Button.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<section class="bg-zinc-950 text-white min-h-svh flex flex-col justify-end">
+<section class="bg-black text-white min-h-svh flex flex-col justify-end">
   <div class="padding-global pb-16 md:pb-24 pt-40">
     <div class="container flex flex-col gap-10">
       <div class="flex flex-col gap-6 max-w-5xl">
@@ -19,7 +20,7 @@ import Button from "../../components/Button.astro";
           to life — on time, on spec, and built to scale.
         </p>
         <div class="flex gap-3 shrink-0">
-          <Button url="mailto:hello@kevineiserman.com" text="Start a project" />
+          <Button url="mailto:hello@kevineiserman.com" text="Start a project"><Icon name="ph:arrow-right" class="size-4" /></Button>
           <Button url="#work" text="View work" variant="secondary" />
         </div>
       </div>

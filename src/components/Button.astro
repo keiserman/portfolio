@@ -5,15 +5,15 @@ const isSecondary = variant === "secondary";
 
 <a
   href={url}
-  class={`p-3 rounded-lg inline-flex self-start items-center gap-2 font-mono text-xs uppercase leading-none tracking-wider shadow-sm transition ${
+  class={`px-5 py-3.5 rounded inline-flex self-start items-center gap-2 font-mono text-xs uppercase leading-none tracking-wider shadow-sm transition ${
     isSecondary
-      ? "bg-transparent text-zinc-100 border border-zinc-700 hover:bg-zinc-800"
+      ? "bg-transparent text-zinc-100 border border-zinc-700 hover:bg-white hover:text-zinc-950 hover:border-white"
       : "bg-white text-zinc-950 border-none hover:bg-zinc-200"
   }`}
   data-value={text}
   {...rest}
 >
-  {text}
+  <span data-scramble-text>{text}</span>
   <slot />
 </a>
 
@@ -21,10 +21,12 @@ const isSecondary = variant === "secondary";
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   function scrambleText(button: HTMLElement & { _interval?: ReturnType<typeof setInterval> }) {
+    const textEl = button.querySelector<HTMLElement>("[data-scramble-text]");
+    if (!textEl) return;
     let iteration = 0;
-    const originalText = (button as HTMLElement).dataset.value ?? "";
+    const originalText = button.dataset.value ?? "";
     let interval = setInterval(() => {
-      button.textContent = originalText
+      textEl.textContent = originalText
         .split("")
         .map((letter, index) => {
           if (index < iteration) return originalText[index];
@@ -39,11 +41,12 @@ const isSecondary = variant === "secondary";
 
   function restoreText(button: HTMLElement & { _interval?: ReturnType<typeof setInterval> }) {
     clearInterval(button._interval);
-    button.textContent = (button as HTMLElement).dataset.value ?? "";
+    const textEl = button.querySelector<HTMLElement>("[data-scramble-text]");
+    if (textEl) textEl.textContent = button.dataset.value ?? "";
   }
 
   document.querySelectorAll<HTMLElement>("a[data-value]").forEach((button) => {
-    button.addEventListener("mouseover", () => scrambleText(button as any));
+    button.addEventListener("mouseenter", () => scrambleText(button as any));
     button.addEventListener("mouseleave", () => restoreText(button as any));
   });
 </script>

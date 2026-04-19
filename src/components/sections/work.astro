@@ -1,6 +1,8 @@
 ---
+import "swiper/css";
 import Button from "../../components/Button.astro";
 import Badge from "../Badge.astro";
+import { Icon } from "astro-icon/components";
 import { sanityClient, urlFor } from "../../lib/sanity";
 
 const projects = await sanityClient.fetch(
@@ -8,40 +10,42 @@ const projects = await sanityClient.fetch(
 );
 ---
 
-<section id="work" class="section bg-zinc-950 text-white border-t border-zinc-800">
-  <div class="padding-global">
-    <div class="container">
-      <div class="flex flex-col gap-4 mb-16">
-        <p class="text-zinc-400 font-mono text-sm uppercase tracking-widest">Featured work</p>
-        <h2>Selected projects</h2>
-      </div>
-      <div class="flex flex-col gap-6">
+<section id="work" class="section bg-zinc-950 text-white">
+  <div class="padding-global mb-12">
+    <div class="container text-center">
+      <p class="text-zinc-400 font-mono text-sm uppercase tracking-widest mb-4">Featured work</p>
+      <h2>Selected projects</h2>
+    </div>
+  </div>
+
+  <div class="py-8">
+    <div class="swiper" id="project-swiper">
+      <div class="swiper-wrapper">
         {
           projects.map((project: any) => (
-            <div class="group grid md:grid-cols-5 grid-cols-1 gap-0 rounded-xl overflow-hidden border border-zinc-800 hover:border-zinc-600 transition-colors">
-              <div class="md:col-span-2 flex flex-col justify-between px-5 py-8 gap-6 bg-zinc-900">
-                <div class="flex flex-col gap-4">
-                  <div class="flex gap-2">
-                    {project.tag?.map((tag: string) => (
-                      <Badge>{tag}</Badge>
-                    ))}
+            <div class="swiper-slide">
+              <div class="grid md:grid-cols-5 grid-cols-1 rounded overflow-hidden border border-zinc-700 transition-all duration-400">
+                <div class="md:col-span-2 flex flex-col justify-between px-5 py-8 gap-10 bg-zinc-900">
+                  <div class="flex flex-col gap-6">
+                    <div class="flex gap-2">
+                      {project.tag?.map((tag: string) => (
+                        <Badge>{tag}</Badge>
+                      ))}
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <h3>{project.title}</h3>
+                      <p class="text-zinc-400 leading-relaxed">{project.description}</p>
+                    </div>
                   </div>
-                  <h3>{project.title}</h3>
-                  <p class="text-zinc-400 leading-relaxed">{project.description}</p>
+                  <Button url={project.link} target="_blank" text="View site" variant="secondary" />
                 </div>
-                <Button
-                  url={project.link}
-                  target="_blank"
-                  text="View site"
-                  variant="secondary"
-                />
-              </div>
-              <div class="md:col-span-3">
-                <img
-                  src={urlFor(project.image).width(1200).url()}
-                  alt={project.title}
-                  class="w-full h-full object-cover aspect-video md:aspect-auto"
-                />
+                <div class="md:col-span-3">
+                  <img
+                    src={urlFor(project.image).width(1200).url()}
+                    alt={project.title}
+                    class="w-full h-full object-cover aspect-video md:aspect-auto"
+                  />
+                </div>
               </div>
             </div>
           ))
@@ -49,4 +53,84 @@ const projects = await sanityClient.fetch(
       </div>
     </div>
   </div>
+
+  <div class="padding-global mt-8">
+    <div class="container flex flex-col items-center gap-8">
+      <div id="project-pagination" class="flex gap-2 items-center justify-center"></div>
+      <div class="flex gap-2">
+        <button
+          id="project-prev"
+          class="p-2.5 rounded border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
+          aria-label="Previous"
+        >
+          <Icon name="ph:arrow-left" class="size-4" />
+        </button>
+        <button
+          id="project-next"
+          class="p-2.5 rounded border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
+          aria-label="Next"
+        >
+          <Icon name="ph:arrow-right" class="size-4" />
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+  new Swiper("#project-swiper", {
+    modules: [Navigation, Pagination, Autoplay],
+    slidesPerView: 1.08,
+    centeredSlides: true,
+    spaceBetween: 20,
+    loop: true,
+    speed: 900,
+    autoplay: {
+      delay: 6000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    navigation: {
+      prevEl: "#project-prev",
+      nextEl: "#project-next",
+    },
+    pagination: {
+      el: "#project-pagination",
+      clickable: true,
+      renderBullet: (_index, className) => `<button class="${className}"></button>`,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 1.35,
+        spaceBetween: 28,
+      },
+    },
+  });
+</script>
+
+<style>
+  #project-swiper {
+    overflow: visible !important;
+  }
+  #project-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+  #project-swiper .swiper-slide {
+    height: auto;
+    transition: transform 0.9s ease, filter 0.9s ease, opacity 0.9s ease;
+  }
+  #project-swiper .swiper-slide > div {
+    height: 100%;
+  }
+  #project-swiper .swiper-slide-active {
+    transform: scale(1);
+  }
+  #project-swiper .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.88);
+    filter: blur(3px);
+    opacity: 0.45;
+  }
+</style>

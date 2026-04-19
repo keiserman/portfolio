@@ -1,27 +1,23 @@
 ---
 import Logo from "./Logo.astro";
+import Button from "./Button.astro";
 ---
 
 <header class="w-full py-6 absolute top-0 z-50">
   <div class="padding-global">
     <div class="container flex items-center justify-between gap-4">
-      <a href="/" class="flex items-center gap-2 text-white text-sm font-mono uppercase tracking-widest">
-        <Logo />Kevin Eiserman
+      <a href="/" class="flex items-center gap-2 text-white tracking-wide">
+        <div class="bg-zinc-800 p-2 rounded"><Logo /></div>Kevin Eiserman
       </a>
       <div id="nav-menu" class="md:block hidden grow">
-        <div class="md:flex md:flex-row md:relative md:p-0 gap-4 md:items-center md:top-0 md:right-0 md:bg-transparent bg-zinc-900 flex flex-col absolute top-20 right-[5%] p-6 rounded-lg z-30 md:shadow-none shadow-lg border border-zinc-800 md:border-none">
+        <div class="md:flex md:flex-row md:relative md:p-0 gap-4 md:items-center md:top-0 md:right-0 md:bg-transparent bg-zinc-900 flex flex-col absolute top-20 right-[5%] p-6 rounded z-30 md:shadow-none shadow-lg border border-zinc-800 md:border-none">
           <div class="flex md:flex-row flex-col md:gap-6 gap-3 grow justify-end">
-            <a href="#work" class="navbar-link text-sm">Work</a>
-            <a href="#services" class="navbar-link text-sm">Services</a>
-            <a href="#process" class="navbar-link text-sm">Process</a>
-            <a href="#testimonials" class="navbar-link text-sm">Testimonials</a>
+            <a href="#work" class="navbar-link">Work</a>
+            <a href="#services" class="navbar-link">Services</a>
+            <a href="#process" class="navbar-link">Process</a>
+            <a href="#testimonials" class="navbar-link">Testimonials</a>
           </div>
-          <a
-            href="mailto:hello@kevineiserman.com"
-            class="font-mono text-xs uppercase tracking-wider text-white border border-zinc-700 rounded-lg px-3 py-2 hover:bg-zinc-800 transition-colors"
-          >
-            Get in touch
-          </a>
+          <Button url="mailto:hello@kevineiserman.com" text="Get in touch" variant="secondary" />
         </div>
       </div>
       <div class="flex gap-4 items-center">

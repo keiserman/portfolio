@@ -14,6 +14,10 @@
   font-display: swap;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 h1 {
   @apply text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.05];
 }
@@ -43,13 +47,27 @@ h3 {
 }
 
 .card {
-  @apply px-5 py-6 rounded-xl bg-zinc-900 border border-zinc-800;
+  @apply px-5 py-6 rounded-lg bg-zinc-900 border border-zinc-700;
 }
 
 .icon {
-  @apply size-10 p-2 text-zinc-300 bg-zinc-800 rounded-md;
+  @apply size-10 p-2 text-zinc-300 bg-zinc-800 rounded;
 }
 
 input {
   @apply px-3 py-2 bg-transparent border border-zinc-700 rounded-lg;
+}
+
+.swiper-pagination-bullet {
+  width: 20px !important;
+  height: 6px !important;
+  border-radius: 999px !important;
+  background-color: rgb(82 82 91) !important;
+  opacity: 1 !important;
+  transition: width 0.3s ease, background-color 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 36px !important;
+  background-color: white !important;
 }
