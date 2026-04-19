@@ -1,6 +1,6 @@
 ---
 import Button from "../../components/Button.astro";
-import Badge from ".././Badge.astro";
+import Badge from "../Badge.astro";
 import { sanityClient, urlFor } from "../../lib/sanity";
 
 const projects = await sanityClient.fetch(
@@ -8,45 +8,44 @@ const projects = await sanityClient.fetch(
 );
 ---
 
-<section class="bg-zinc-950 text-white">
+<section id="work" class="section bg-zinc-950 text-white border-t border-zinc-800">
   <div class="padding-global">
     <div class="container">
-      <div class="flex flex-col">
-        <h2 class="mb-14">Featured work</h2>
-        <div class="grid gap-8">
-          {
-            projects.map((project: any) => (
-              <div class="px-6 py-6 bg-zinc-900 rounded-lg grid md:grid-cols-3 grid-cols-1 gap-6 items-center">
-                <div class="flex flex-col justify-between items-start gap-6 h-full">
-                  <div class="flex flex-col items-start gap-6">
-                    <div class="flex gap-2">
-                      {project.tag?.map((tag: string) => (
-                        <Badge key={tag}>{tag}</Badge>
-                      ))}
-                    </div>
-
-                    <h3 data-animate="heading">{project.title}</h3>
-                    <p class="text-zinc-400 dark:text-zinc-400">
-                      {project.description}
-                    </p>
+      <div class="flex flex-col gap-4 mb-16">
+        <p class="text-zinc-400 font-mono text-sm uppercase tracking-widest">Featured work</p>
+        <h2>Selected projects</h2>
+      </div>
+      <div class="flex flex-col gap-6">
+        {
+          projects.map((project: any) => (
+            <div class="group grid md:grid-cols-5 grid-cols-1 gap-0 rounded-xl overflow-hidden border border-zinc-800 hover:border-zinc-600 transition-colors">
+              <div class="md:col-span-2 flex flex-col justify-between px-5 py-8 gap-6 bg-zinc-900">
+                <div class="flex flex-col gap-4">
+                  <div class="flex gap-2">
+                    {project.tag?.map((tag: string) => (
+                      <Badge>{tag}</Badge>
+                    ))}
                   </div>
-
-                  <Button
-                    url={project.link}
-                    target="_blank"
-                    text="View site"
-                    variant="secondary"
-                  />
+                  <h3>{project.title}</h3>
+                  <p class="text-zinc-400 leading-relaxed">{project.description}</p>
                 </div>
-                <img
-                  src={urlFor(project.image).width(800).url()}
-                  alt={project.title}
-                  class="aspect-video col-span-2 bg-zinc-300 dark:bg-zinc-700 object-cover rounded-lg shadow-lg"
+                <Button
+                  url={project.link}
+                  target="_blank"
+                  text="View site"
+                  variant="secondary"
                 />
               </div>
-            ))
-          }
-        </div>
+              <div class="md:col-span-3">
+                <img
+                  src={urlFor(project.image).width(1200).url()}
+                  alt={project.title}
+                  class="w-full h-full object-cover aspect-video md:aspect-auto"
+                />
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>

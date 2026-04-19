@@ -6,11 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Satoshi", ...defaultTheme.fontFamily.sans],
-        mono: ["DM Mono", ...defaultTheme.fontFamily.mono],
-      },
-      colors: {
-        primary: "#cdc5fd",
+        sans: ["Geist", ...defaultTheme.fontFamily.sans],
+        mono: ["Geist Mono", ...defaultTheme.fontFamily.mono],
       },
     },
   },

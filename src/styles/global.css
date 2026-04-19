@@ -1,25 +1,33 @@
 @font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-family: "Geist";
+  src: url("/fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMono-Variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 h1 {
-  @apply text-4xl md:text-6xl font-medium;
+  @apply text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.05];
 }
 
 h2 {
-  @apply text-3xl md:text-5xl font-medium;
+  @apply text-3xl md:text-5xl font-medium tracking-tight;
 }
 
 h3 {
-  @apply text-2xl md:text-4xl;
+  @apply text-xl md:text-2xl font-medium;
 }
 
 .padding-global {
-  @apply md:px-6 px-4;
+  @apply md:px-8 px-5;
 }
 
 .container {
@@ -27,15 +35,15 @@ h3 {
 }
 
 .section {
-  @apply md:py-32 py-14;
+  @apply md:py-32 py-16;
 }
 
 .navbar-link {
-  @apply text-zinc-400 hover:text-white;
+  @apply text-zinc-400 hover:text-white transition-colors;
 }
 
 .card {
-  @apply px-6 py-8 rounded-xl bg-gradient-to-b from-zinc-950 to-zinc-900 border border-zinc-800;
+  @apply px-5 py-6 rounded-xl bg-zinc-900 border border-zinc-800;
 }
 
 .icon {
@@ -43,10 +51,5 @@ h3 {
 }
 
 input {
-  @apply px-1 py-2 bg-transparent border border-zinc-700 rounded-lg;
-}
-
-.radio-label {
-  @apply w-full text-center inline-block p-6 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-200 cursor-pointer transition-all
-      peer-checked:bg-primary peer-checked:text-black peer-checked:border-primary;
+  @apply px-3 py-2 bg-transparent border border-zinc-700 rounded-lg;
 }

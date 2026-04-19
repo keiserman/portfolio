@@ -8,26 +8,70 @@ const testimonials = await sanityClient.fetch(
 );
 ---
 
-<section class="swiper overflow-hidden">
+<div class="swiper overflow-hidden" id="testimonial-swiper">
   <div class="swiper-wrapper">
     {
       testimonials.map((testimonial: any) => (
         <div class="swiper-slide">
-          <div class="flex flex-col gap-6 border border-zinc-800 dark:border-zinc-800 px-6 py-8 md:px-8 md:py-10 rounded-xl">
+          <div class="flex flex-col gap-6 border border-zinc-800 px-6 py-8 md:px-8 md:py-10 rounded-xl h-full">
             <Icon name="ph:quotes" class="icon" />
-            <p class="text-base text-zinc-400">{testimonial.text}</p>
-            <div class="text-xl">{testimonial.name}</div>
+            <p class="text-base text-zinc-400 leading-relaxed">{testimonial.text}</p>
+            <div class="text-base font-medium">{testimonial.name}</div>
           </div>
         </div>
       ))
     }
   </div>
-</section>
+</div>
+
+<div class="flex items-center justify-between mt-6">
+  <div class="flex gap-2">
+    <button
+      id="swiper-prev"
+      class="p-2.5 rounded-lg border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
+      aria-label="Previous"
+    >
+      <Icon name="ph:arrow-left" class="size-4" />
+    </button>
+    <button
+      id="swiper-next"
+      class="p-2.5 rounded-lg border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
+      aria-label="Next"
+    >
+      <Icon name="ph:arrow-right" class="size-4" />
+    </button>
+  </div>
+  <div id="swiper-pagination" class="flex gap-2 items-center"></div>
+</div>
 
 <script>
   import Swiper from "swiper";
-  const swiper = new Swiper(".swiper", {
-    slidesPerView: 2,
+  import { Navigation, Pagination } from "swiper/modules";
+
+  const swiper = new Swiper("#testimonial-swiper", {
+    modules: [Navigation, Pagination],
+    slidesPerView: 1,
     spaceBetween: 16,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+    },
+    navigation: {
+      prevEl: "#swiper-prev",
+      nextEl: "#swiper-next",
+    },
+    pagination: {
+      el: "#swiper-pagination",
+      clickable: true,
+      renderBullet: (_index, className) =>
+        `<button class="${className} w-2 h-2 rounded-full bg-zinc-600 hover:bg-zinc-400 transition-colors"></button>`,
+    },
   });
 </script>
+
+<style>
+  :global(.swiper-pagination-bullet-active) {
+    background-color: white !important;
+  }
+</style>
