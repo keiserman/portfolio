@@ -1,5 +1,6 @@
 ---
 import Button from "../Button.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="section bg-zinc-900 text-white">
@@ -11,40 +12,42 @@ import Button from "../Button.astro";
             <p class="text-zinc-400 font-mono text-sm uppercase tracking-widest">How it works</p>
             <h2>Simple process.<br />No surprises.</h2>
             <p class="text-lg text-zinc-400 leading-relaxed">
-              I keep things straightforward — clear communication, fixed timelines,
-              and no scope creep. Here's what working together looks like.
+              I keep things straightforward — clear communication, fixed timelines, and no scope creep. Here's what working together looks
+              like.
             </p>
           </div>
           <div class="flex">
-            <Button url="mailto:hello@kevineiserman.com" text="Start a project" variant="secondary" />
+            <Button url="mailto:hello@kevineiserman.com" text="Start a project"><Icon name="ph:arrow-right" class="size-4" /></Button>
           </div>
         </div>
         <div class="flex flex-col">
-          {[
-            {
-              step: "01",
-              title: "Brief",
-              text: "Send over your Figma files, spec, and brand guidelines. I'll review everything and come back with questions, a fixed quote, and a realistic timeline.",
-            },
-            {
-              step: "02",
-              title: "Build",
-              text: "I build in Webflow following Client-First methodology, keeping you updated at key milestones. You'll have staging access throughout so nothing is a surprise.",
-            },
-            {
-              step: "03",
-              title: "Hand off",
-              text: "On approval I transfer the project to your Webflow workspace and walk through everything you and your client need to manage and update it going forward.",
-            },
-          ].map((item) => (
-            <div class="flex gap-6 py-8 border-t border-zinc-800">
-              <span class="font-mono text-sm text-zinc-500 shrink-0 pt-1">{item.step}</span>
-              <div class="flex flex-col gap-3">
-                <h3>{item.title}</h3>
-                <p class="text-zinc-400 leading-relaxed">{item.text}</p>
+          {
+            [
+              {
+                step: "01",
+                title: "Brief",
+                text: "Send over your Figma files, spec, and brand guidelines. I'll review everything and come back with questions, a fixed quote, and a realistic timeline.",
+              },
+              {
+                step: "02",
+                title: "Build",
+                text: "I build in Webflow following Client-First methodology, keeping you updated at key milestones. You'll have staging access throughout so nothing is a surprise.",
+              },
+              {
+                step: "03",
+                title: "Hand off",
+                text: "On approval I transfer the project to your Webflow workspace and walk through everything you and your client need to manage and update it going forward.",
+              },
+            ].map((item) => (
+              <div class="flex gap-6 py-8 border-t border-zinc-800">
+                <span class="font-mono text-sm text-zinc-500 shrink-0 pt-1">{item.step}</span>
+                <div class="flex flex-col gap-3">
+                  <h3>{item.title}</h3>
+                  <p class="text-zinc-400 leading-relaxed">{item.text}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </div>

@@ -3,14 +3,16 @@ import Logo from "./Logo.astro";
 import Button from "./Button.astro";
 ---
 
-<header class="w-full py-4 fixed top-0 z-50 backdrop-blur-md bg-black/60 border-b border-zinc-800/50">
+<header class="w-full py-4 fixed top-0 z-50 backdrop-blur-md bg-black/80 border-b border-zinc-800/50">
   <div class="padding-global">
     <div class="container flex items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-2 text-white tracking-wide">
         <div class="bg-zinc-800 p-2 rounded"><Logo /></div>Kevin Eiserman
       </a>
       <div id="nav-menu" class="md:block hidden grow">
-        <div class="md:flex md:flex-row md:relative md:p-0 gap-4 md:items-center md:top-0 md:right-0 md:bg-transparent bg-zinc-900 flex flex-col absolute top-20 right-[5%] p-6 rounded z-30 md:shadow-none shadow-lg border border-zinc-800 md:border-none">
+        <div
+          class="md:flex md:flex-row md:relative md:p-0 gap-4 md:items-center md:top-0 md:right-0 md:bg-transparent bg-zinc-900 flex flex-col absolute top-20 right-[5%] p-6 rounded z-30 md:shadow-none shadow-lg border border-zinc-800 md:border-none"
+        >
           <div class="flex md:flex-row flex-col md:gap-6 gap-3 grow justify-end">
             <a href="#work" class="navbar-link">Work</a>
             <a href="#services" class="navbar-link">Services</a>

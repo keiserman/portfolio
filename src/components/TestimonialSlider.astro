@@ -3,9 +3,7 @@ import "swiper/css";
 import { Icon } from "astro-icon/components";
 import { sanityClient } from "../lib/sanity";
 
-const testimonials = await sanityClient.fetch(
-  `*[_type == "testimonial"] | order(order asc) { name, role, text }`
-);
+const testimonials = await sanityClient.fetch(`*[_type == "testimonial"] | order(order asc) { name, role, text }`);
 ---
 
 <div class="swiper overflow-hidden" id="testimonial-swiper">
@@ -13,10 +11,12 @@ const testimonials = await sanityClient.fetch(
     {
       testimonials.map((testimonial: any) => (
         <div class="swiper-slide">
-          <div class="card flex flex-col gap-6 h-full">
+          <div class="card flex flex-col gap-8 h-full">
             <Icon name="ph:quotes" class="icon" />
-            <p class="text-base text-zinc-400 leading-relaxed">{testimonial.text}</p>
-            <div class="text-base font-medium">{testimonial.name}</div>
+            <div class="flex flex-col gap-4">
+              <p class="text-base text-zinc-400 leading-relaxed">{testimonial.text}</p>
+              <div class="text-base font-medium">{testimonial.name}</div>
+            </div>
           </div>
         </div>
       ))
