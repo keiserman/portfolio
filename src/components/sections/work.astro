@@ -5,9 +5,7 @@ import Badge from "../Badge.astro";
 import { Icon } from "astro-icon/components";
 import { sanityClient, urlFor } from "../../lib/sanity";
 
-const projects = await sanityClient.fetch(
-  `*[_type == "project"] | order(order asc) { title, slug, tag, description, image, link }`
-);
+const projects = await sanityClient.fetch(`*[_type == "project"] | order(order asc) { title, slug, tag, description, image, link }`);
 ---
 
 <section id="work" class="section bg-zinc-950 text-white">
@@ -41,7 +39,7 @@ const projects = await sanityClient.fetch(
                 </div>
                 <div class="md:col-span-3">
                   <img
-                    src={urlFor(project.image).width(1200).auto('format').quality(80).url()}
+                    src={urlFor(project.image).width(1200).auto("format").quality(80).url()}
                     alt={project.title}
                     class="w-full h-full object-cover aspect-video md:aspect-auto"
                   />
@@ -60,14 +58,14 @@ const projects = await sanityClient.fetch(
       <div class="flex gap-2">
         <button
           id="project-prev"
-          class="p-2.5 rounded border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
+          class="p-2.5 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
           aria-label="Previous"
         >
           <Icon name="ph:arrow-left" class="size-4" />
         </button>
         <button
           id="project-next"
-          class="p-2.5 rounded border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
+          class="p-2.5 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
           aria-label="Next"
         >
           <Icon name="ph:arrow-right" class="size-4" />
@@ -120,7 +118,10 @@ const projects = await sanityClient.fetch(
   }
   #project-swiper .swiper-slide {
     height: auto;
-    transition: transform 0.9s ease, filter 0.9s ease, opacity 0.9s ease;
+    transition:
+      transform 0.9s ease,
+      filter 0.9s ease,
+      opacity 0.9s ease;
   }
   #project-swiper .swiper-slide > div {
     height: 100%;
