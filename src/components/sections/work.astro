@@ -5,7 +5,7 @@ import Badge from "../Badge.astro";
 import SwiperNav from "../SwiperNav.astro";
 import { sanityClient, urlFor } from "../../lib/sanity";
 
-const projects = await sanityClient.fetch(`*[_type == "project"] | order(order asc) { title, slug, tag, description, image, link }`);
+const projects = await sanityClient.fetch(`*[_type == "project"] | order(order asc) { title, slug, tag, description, image, link, "videoUrl": video.asset->url }`);
 ---
 
 <section id="work" class="section bg-zinc-950 text-white">
@@ -38,11 +38,25 @@ const projects = await sanityClient.fetch(`*[_type == "project"] | order(order a
                   <Button url={project.link} target="_blank" text="View site" variant="secondary" />
                 </div>
                 <div class="md:col-span-3">
-                  <img
-                    src={urlFor(project.image).width(1200).auto("format").quality(80).url()}
-                    alt={project.title}
-                    class="w-full h-full object-cover aspect-video md:aspect-auto rounded"
-                  />
+                  {project.videoUrl ? (
+                    <video
+                      class="w-full h-full object-cover aspect-video md:aspect-auto rounded"
+                      poster={urlFor(project.image).width(1200).auto("format").quality(80).url()}
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      data-lazy-video
+                    >
+                      <source data-src={project.videoUrl} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img
+                      src={urlFor(project.image).width(1200).auto("format").quality(80).url()}
+                      alt={project.title}
+                      class="w-full h-full object-cover aspect-video md:aspect-auto rounded"
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -65,6 +79,27 @@ const projects = await sanityClient.fetch(`*[_type == "project"] | order(order a
 <script>
   import Swiper from "swiper";
   import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+  function getActiveVideo(): HTMLVideoElement | null {
+    return document.querySelector(".swiper-slide-active [data-lazy-video]");
+  }
+
+  function loadVideo(video: HTMLVideoElement) {
+    const source = video.querySelector("source[data-src]");
+    if (source && !source.getAttribute("src")) {
+      source.setAttribute("src", source.getAttribute("data-src")!);
+      video.load();
+    }
+  }
+
+  function playActiveVideo() {
+    document.querySelectorAll<HTMLVideoElement>("[data-lazy-video]").forEach(v => v.pause());
+    const active = getActiveVideo();
+    if (active) {
+      loadVideo(active);
+      active.play().catch(() => {});
+    }
+  }
 
   new Swiper("#project-swiper", {
     modules: [Navigation, Pagination, Autoplay],
@@ -92,6 +127,10 @@ const projects = await sanityClient.fetch(`*[_type == "project"] | order(order a
         slidesPerView: 1.35,
         spaceBetween: 28,
       },
+    },
+    on: {
+      init: playActiveVideo,
+      slideChangeTransitionEnd: playActiveVideo,
     },
   });
 </script>

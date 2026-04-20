@@ -44,6 +44,13 @@ export const project = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "video",
+      title: "Preview Video",
+      type: "file",
+      options: { accept: "video/*" },
+      description: "Short screen recording (under 10s, MP4 preferred)",
+    }),
+    defineField({
       name: "link",
       title: "Live URL",
       type: "url",
