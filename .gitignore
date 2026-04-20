@@ -4,4 +4,4 @@ tsconfig.json
 /dist
 /.astro
 /.sanity
-.env
+.env.claude/
