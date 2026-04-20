@@ -2,7 +2,7 @@
 import "swiper/css";
 import Button from "../../components/Button.astro";
 import Badge from "../Badge.astro";
-import { Icon } from "astro-icon/components";
+import SwiperNav from "../SwiperNav.astro";
 import { sanityClient, urlFor } from "../../lib/sanity";
 
 const projects = await sanityClient.fetch(`*[_type == "project"] | order(order asc) { title, slug, tag, description, image, link }`);
@@ -56,20 +56,7 @@ const projects = await sanityClient.fetch(`*[_type == "project"] | order(order a
     <div class="container flex flex-col items-center gap-8">
       <div id="project-pagination" class="flex gap-2 items-center justify-center"></div>
       <div class="flex gap-2">
-        <button
-          id="project-prev"
-          class="p-2.5 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
-          aria-label="Previous"
-        >
-          <Icon name="ph:arrow-left" class="size-4" />
-        </button>
-        <button
-          id="project-next"
-          class="p-2.5 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
-          aria-label="Next"
-        >
-          <Icon name="ph:arrow-right" class="size-4" />
-        </button>
+        <SwiperNav name="project" />
       </div>
     </div>
   </div>

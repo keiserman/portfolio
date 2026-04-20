@@ -1,5 +1,6 @@
 ---
 import "swiper/css";
+import SwiperNav from "./SwiperNav.astro";
 import { Icon } from "astro-icon/components";
 import { sanityClient } from "../lib/sanity";
 
@@ -13,7 +14,7 @@ const testimonials = await sanityClient.fetch(`*[_type == "testimonial"] | order
         <div class="swiper-slide !h-auto">
           <div class="card flex flex-col justify-between gap-8 h-full">
             <div class="flex flex-col gap-6">
-              <Icon name="ph:quotes" class="icon" />
+              <Icon name="lucide:quote" class="icon" />
               <p class="text-base text-zinc-400 leading-relaxed">{testimonial.text}</p>
             </div>
             <div class="flex flex-col gap-1">
@@ -29,22 +30,9 @@ const testimonials = await sanityClient.fetch(`*[_type == "testimonial"] | order
 
 <div class="flex items-center justify-between mt-6">
   <div class="flex gap-2">
-    <button
-      id="swiper-prev"
-      class="p-2.5 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
-      aria-label="Previous"
-    >
-      <Icon name="ph:arrow-left" class="size-4" />
-    </button>
-    <button
-      id="swiper-next"
-      class="p-2.5 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
-      aria-label="Next"
-    >
-      <Icon name="ph:arrow-right" class="size-4" />
-    </button>
+    <SwiperNav name="testimonial" />
   </div>
-  <div id="swiper-pagination" class="flex gap-2 items-center"></div>
+  <div id="testimonial-pagination" class="flex gap-2 items-center"></div>
 </div>
 
 <script>
@@ -61,11 +49,11 @@ const testimonials = await sanityClient.fetch(`*[_type == "testimonial"] | order
       },
     },
     navigation: {
-      prevEl: "#swiper-prev",
-      nextEl: "#swiper-next",
+      prevEl: "#testimonial-prev",
+      nextEl: "#testimonial-next",
     },
     pagination: {
-      el: "#swiper-pagination",
+      el: "#testimonial-pagination",
       clickable: true,
       renderBullet: (_index, className) => `<button class="${className}"></button>`,
     },

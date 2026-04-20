@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components";
+const { name } = Astro.props;
+---
+
+<button
+  id={`${name}-prev`}
+  class="p-2.5 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
+  aria-label="Previous"
+>
+  <Icon name="lucide:arrow-left" class="size-4" />
+</button>
+<button
+  id={`${name}-next`}
+  class="p-2.5 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
+  aria-label="Next"
+>
+  <Icon name="lucide:arrow-right" class="size-4" />
+</button>
