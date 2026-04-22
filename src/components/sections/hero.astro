@@ -1,10 +1,40 @@
 ---
 import Button from "../../components/Button.astro";
 import { Icon } from "astro-icon/components";
+import { sanityClient, urlFor } from "../../lib/sanity";
+import "swiper/css";
+
+const projects = await sanityClient.fetch(
+  `*[_type == "project"] | order(order asc) { title, image }`
+);
 ---
 
-<section class="bg-black text-white min-h-svh flex flex-col justify-end">
-  <div class="padding-global pb-16 md:pb-24 pt-40">
+<section id="hero" class="bg-black text-white min-h-screen flex flex-col relative overflow-hidden">
+  <!-- Thumbnail slider -->
+  <div class="pt-28 pb-12 relative z-10">
+    <div class="swiper hero-swiper px-5 md:px-8">
+      <div class="swiper-wrapper items-end">
+        {projects.map((project: any, i: number) => (
+          <div class="swiper-slide !w-auto">
+            <div class={`thumbnail-item rounded-lg overflow-hidden ${i % 2 === 0 ? "even" : "odd"}`} style="height: clamp(140px, 14vw, 220px)">
+              <img
+                src={urlFor(project.image).height(300).auto("format").quality(80).url()}
+                alt={project.title}
+                class="h-full w-auto object-cover pointer-events-none"
+                draggable="false"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent pointer-events-none z-10"></div>
+    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent pointer-events-none z-10"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="grow"></div>
+  <div class="padding-global pb-16 md:pb-24 relative z-10">
     <div class="container flex flex-col gap-10">
       <div class="flex flex-col gap-6 max-w-5xl">
         <div class="flex items-center gap-3 w-fit bg-zinc-900 border border-zinc-800 rounded-full px-3 py-1.5">
@@ -28,3 +58,41 @@ import { Icon } from "astro-icon/components";
     </div>
   </div>
 </section>
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay } from "swiper/modules";
+
+  new Swiper(".hero-swiper", {
+    modules: [Autoplay],
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    loop: true,
+    speed: 600,
+    grabCursor: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+  });
+</script>
+
+<style>
+  .hero-swiper {
+    overflow: visible !important;
+  }
+
+  .thumbnail-item {
+    transition: transform 0.3s ease;
+    transform-origin: bottom center;
+  }
+
+  .thumbnail-item.even:hover {
+    transform: rotate(2deg) scale(1.04);
+  }
+
+  .thumbnail-item.odd:hover {
+    transform: rotate(-2deg) scale(1.04);
+  }
+</style>
